@@ -35,7 +35,7 @@ export function Footer() {
           ))}
         </nav>
         <p className="max-w-xs text-center text-xs leading-relaxed text-white/55 sm:text-right">
-          © 2025 PMG Transport Pvt. Ltd. All Rights Reserved.
+          © 2026 PMG Transport Pvt. Ltd. All Rights Reserved.
         </p>
       </div>
     </footer>
