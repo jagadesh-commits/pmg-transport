@@ -43,25 +43,28 @@ export default function AboutPage() {
           </h1>
           <div className="mt-10 max-w-3xl space-y-6 text-lg leading-relaxed text-pmg-muted">
             <p>
-              PMG Transport is a local heavy equipment transport and logistics
-              company with integrated warehousing capability. For over fourteen
-              years we have moved oversized machinery, industrial modules, and
-              time-critical project cargo across Chennai, Thiruvallur, and
-              Kanchipuram—pairing permitted road
-              movement with the planning rigor your schedules depend on.
+              PMG Transport is a local steel logistics company rooted in the
+              regional steel trading industry — founded by the same managing
+              director who built a career moving and distributing steel across
+              Tamil Nadu. For over fourteen years we have hauled steel coils,
+              TMT bars, sheets & plates, pipes, and structural sections across
+              Chennai, Thiruvallur, and Kanchipuram — pairing secured road
+              movement with integrated warehousing when your supply chain needs
+              it.
             </p>
             <p>
               Our operations desk runs 24/7, our fleet and partner network are
               licensed and insured, and our crews train specifically for
-              sensitive, high-value loads. When the route is tight and the clock
-              is loud, we are the team customers call.
+              steel loads — coil handling, weight compliance, and sensitive
+              fabricator deliveries. When the schedule is tight and the cargo
+              is critical, we are the team steel customers call.
             </p>
           </div>
           <div className="mt-10 flex flex-wrap gap-4">
             <div className="rounded-xl border border-pmg-border bg-white px-8 py-6 shadow-[0_4px_24px_rgba(0,0,0,0.06)]">
               <p className="font-heading text-5xl font-black text-pmg-red">14+</p>
               <p className="mt-1 text-sm font-bold uppercase tracking-wider text-pmg-text">
-                Years of Experience
+                Years in Steel Logistics
               </p>
             </div>
             <div className="rounded-xl border border-pmg-border bg-white px-8 py-6 shadow-[0_4px_24px_rgba(0,0,0,0.06)]">

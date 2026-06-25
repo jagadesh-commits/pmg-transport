@@ -6,19 +6,19 @@ import { SectionBadge } from "@/components/SectionBadge";
 const testimonials = [
   {
     quote:
-      "PMG Transport handled our factory machinery relocation from Manali to Kanchipuram without a single scratch. Professional team, on-time delivery. Highly recommended.",
+      "PMG Transport moved our steel coil shipment from the mill to our fabrication yard in Kanchipuram without a single issue. Professional team, proper load securing, on-time delivery. Highly recommended.",
     name: "Ramesh Kumar",
     designation: "Plant Manager, Chennai",
   },
   {
     quote:
-      "We have been using PMG for our regular logistics needs across Thiruvallur for over 2 years. Reliable, affordable, and always on time. Best transport partner we have had.",
+      "We have been using PMG for regular TMT bar and steel sheet deliveries across Thiruvallur for over 2 years. Reliable, affordable, and always on time. Best steel logistics partner we have had.",
     name: "Suresh Babu",
     designation: "Operations Head, Thiruvallur",
   },
   {
     quote:
-      "Booked a Taurus 24 ton for a construction equipment move. The team was professional, had all permits ready, and delivered safely. Will definitely use again.",
+      "Booked a Taurus 24 ton for a steel pipe and structural beam delivery. The team was professional, had all documentation ready, and delivered safely. Will definitely use again.",
     name: "Arjun Selvam",
     designation: "Site Engineer, Kanchipuram",
   },

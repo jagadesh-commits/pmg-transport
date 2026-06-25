@@ -7,23 +7,23 @@ import { SectionBadge } from "@/components/SectionBadge";
 const services = [
   {
     num: "01",
-    title: "Heavy Equipment Transport",
-    desc: "Specialized hauling of oversized machinery and construction equipment with full permits and escorts",
+    title: "Steel Product Transport",
+    desc: "Dedicated hauling of steel coils, sheets & plates, TMT bars & rods, pipes & tubes, and structural sections — secured loads and mill-to-fabricator delivery",
   },
   {
     num: "02",
     title: "Logistics & Warehousing",
-    desc: "End-to-end supply chain solutions including bonded warehousing, inventory management, and cross-docking",
+    desc: "Bonded warehousing and inventory management for steel stock — mill receipts, fabricator staging, and timed releases for production schedules",
   },
   {
     num: "03",
     title: "Real-Time Tracking",
-    desc: "GPS-enabled fleet tracking with live status updates and 24/7 dispatch support",
+    desc: "GPS-enabled fleet tracking with live status updates and 24/7 dispatch support for every steel consignment",
   },
   {
     num: "04",
     title: "Project Cargo",
-    desc: "Full project planning, route surveys, and multi-modal coordination for complex cargo movements",
+    desc: "Coordinated steel project deliveries — route planning, multi-drop scheduling, and phased mill-to-fabricator movements for large orders",
   },
 ];
 

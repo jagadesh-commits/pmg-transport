@@ -19,9 +19,9 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "PMG Transport | Heavy Equipment Transport & Logistics",
+  title: "PMG Transport | Steel Transport & Logistics",
   description:
-    "Specialists in heavy equipment transport and integrated logistics warehousing. We deliver what others can't.",
+    "Specialists in steel coil, TMT bar, and steel product transport with integrated logistics warehousing across Chennai, Thiruvallur, and Kanchipuram.",
 };
 
 export default function RootLayout({

@@ -6,20 +6,20 @@ import { PillButton } from "@/components/PillButton";
 
 const detail = [
   {
-    title: "Heavy Equipment Transport",
-    body: "Specialized hauling of oversized machinery and construction equipment with full permits and escorts. We coordinate route surveys, pilot vehicles, and compliance documentation so your assets move without surprises.",
+    title: "Steel Product Transport",
+    body: "PMG Transport specializes in steel logistics — not general heavy equipment. We haul Steel Coils, Steel Sheets & Plates, TMT Bars & Rods, Steel Pipes & Tubes, Steel Wire & Rods, and Angles, Channels & Beams with proper load securing, weight distribution, and mill-to-fabricator routing across Chennai, Thiruvallur, and Kanchipuram.",
   },
   {
     title: "Logistics & Warehousing",
-    body: "End-to-end supply chain solutions including bonded warehousing, inventory management, and cross-docking. Ideal for projects that need staging, consolidation, and timed releases to site.",
+    body: "Bonded warehousing and inventory management built for steel stock — coil yards, sheet and plate staging, TMT bar storage, and timed releases aligned to fabrication and project schedules. Ideal for distributors and fabricators who need buffer between mill receipts and site delivery.",
   },
   {
     title: "Real-Time Tracking",
-    body: "GPS-enabled fleet tracking with live status updates and 24/7 dispatch support. Your team sees progress milestones, ETAs, and exception alerts as the move unfolds.",
+    body: "GPS-enabled fleet tracking with live status updates and 24/7 dispatch support for every steel consignment. Your team sees pickup confirmations, in-transit milestones, ETAs, and proof of delivery as coils, bars, and structural sections move through the supply chain.",
   },
   {
     title: "Project Cargo",
-    body: "Full project planning, route surveys, and multi-modal coordination for complex cargo movements. We align road, rail, and port handoffs with a single accountable operations lead.",
+    body: "Coordinated steel project deliveries — phased mill-to-fabricator movements, multi-drop scheduling for large coil and structural orders, and route planning for oversized steel loads. We align road movement with a single accountable operations lead from first pickup to final drop.",
   },
 ];
 
@@ -43,12 +43,13 @@ export default function ServicesPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionBadge icon={<DocIcon />}>Services</SectionBadge>
           <h1 className="font-heading mt-6 text-4xl font-extrabold uppercase tracking-tight text-pmg-text sm:text-5xl md:text-6xl">
-            Heavy Transport & Logistics
+            Steel Transport & Logistics
           </h1>
           <p className="mt-6 max-w-2xl text-lg text-pmg-muted">
-            From single oversize loads to multi-phase project cargo, PMG Transport
-            delivers disciplined planning, permitted movement, and warehousing when
-            you need buffer and control.
+            PMG Transport specializes in steel logistics — moving Steel Coils,
+            Sheets & Plates, TMT Bars & Rods, Pipes & Tubes, Wire & Rods, and
+            Angles, Channels & Beams with disciplined planning, secured hauling,
+            and warehousing when you need inventory buffer and control.
           </p>
         </div>
       </section>

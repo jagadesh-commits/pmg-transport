@@ -180,7 +180,7 @@ export function Hero() {
             className="font-heading mt-8 uppercase leading-[1.05] tracking-tight text-pmg-text"
             style={headlineStyle}
           >
-            <span className="block text-pmg-text">LOCAL HEAVY EQUIPMENT</span>
+            <span className="block text-pmg-text">LOCAL STEEL</span>
             <span className="block text-pmg-text">TRANSPORT &</span>
             <span className="block text-pmg-red">LOGISTICS</span>
           </h1>
@@ -191,8 +191,9 @@ export function Hero() {
             transition={{ delay: 0.35, duration: 0.55 }}
             className="mt-8 max-w-lg text-base leading-relaxed text-pmg-muted sm:text-lg"
           >
-            Local heavy equipment transport and logistics across Chennai,
-            Thiruvallur, and Kanchipuram.
+            Local steel transport and logistics across Chennai, Thiruvallur,
+            and Kanchipuram — steel coils, TMT bars, sheets & plates, and
+            pipes hauled from mill to fabricator.
           </motion.p>
 
           <motion.div
