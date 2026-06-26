@@ -1,17 +1,33 @@
 "use client";
 
 import type { CSSProperties } from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { SectionBadge } from "@/components/SectionBadge";
 import { PillButton } from "@/components/PillButton";
 import { TruckBooking } from "@/components/TruckBooking";
 
 const HERO_STRIP_IMAGES = [
-  "https://picsum.photos/200/140?random=1",
-  "https://picsum.photos/200/140?random=2",
-  "https://picsum.photos/200/140?random=3",
-  "https://picsum.photos/200/140?random=4",
-  "https://picsum.photos/200/140?random=5",
+  {
+    src: "/images/fleet/eicher-front.png",
+    alt: "PMG Transport Eicher truck for steel cargo — front view",
+  },
+  {
+    src: "/images/fleet/eicher-side.png",
+    alt: "PMG Transport Eicher truck for steel cargo — side view",
+  },
+  {
+    src: "/images/fleet/sast-truck.png",
+    alt: "PMG Transport SAST branded truck for steel delivery",
+  },
+  {
+    src: "/images/fleet/bharatbenz-angle.png",
+    alt: "PMG Transport BharatBenz truck for steel cargo — angle view",
+  },
+  {
+    src: "/images/fleet/bharatbenz-front.png",
+    alt: "PMG Transport BharatBenz truck for steel cargo — front view",
+  },
 ] as const;
 
 function HeroImageStrip() {
@@ -48,14 +64,14 @@ function HeroImageStrip() {
           }}
         >
           <div className="hero-picsum-strip-track flex w-full flex-col gap-3">
-            {cards.map((src, i) => (
+            {cards.map((image, i) => (
               <div
-                key={`${src}-${i}`}
+                key={`${image.src}-${i}`}
                 className="shrink-0 overflow-hidden rounded-xl shadow"
               >
-                <img
-                  src={src}
-                  alt=""
+                <Image
+                  src={image.src}
+                  alt={image.alt}
                   width={200}
                   height={140}
                   className="h-[140px] w-[200px] object-cover"
