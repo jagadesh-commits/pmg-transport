@@ -5,7 +5,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { SectionBadge } from "@/components/SectionBadge";
 import { PillButton } from "@/components/PillButton";
-import { TruckBooking } from "@/components/TruckBooking";
+import { useTruckBooking } from "@/components/TruckBookingProvider";
 
 const HERO_STRIP_IMAGES = [
   {
@@ -168,6 +168,8 @@ const headlineStyle: CSSProperties = {
 };
 
 export function Hero() {
+  const { openBooking } = useTruckBooking();
+
   return (
     <section className="relative flex min-h-dvh flex-col overflow-hidden bg-pmg-bg pt-28 sm:pt-[5.25rem] md:pt-[72px]">
       <HeroImageStrip />
@@ -218,27 +220,23 @@ export function Hero() {
             transition={{ delay: 0.45, duration: 0.55 }}
             className="mt-10 flex flex-wrap gap-4"
           >
-            <TruckBooking
-              trigger={(open) => (
-                <button
-                  type="button"
-                  onClick={open}
-                  className="group inline-flex items-center gap-3 rounded-full bg-[#CC1A1A] py-2 pl-2 pr-7 text-sm font-semibold tracking-wide text-white shadow-lg shadow-black/15 transition-all duration-300 ease-in-out hover:scale-[1.02] hover:bg-[#1A5FCC] active:scale-[0.98] active:bg-[#1A5FCC] sm:pr-8 sm:text-base"
-                >
-                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white text-[#111111]">
-                    <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5" aria-hidden>
-                      <path
-                        d="M3 7h10v8H3V7zm10 3h4l3 3v2h-7v-5zM7 18a1.6 1.6 0 100-3.2A1.6 1.6 0 007 18zm10 0a1.6 1.6 0 100-3.2 1.6 1.6 0 000 3.2z"
-                        stroke="currentColor"
-                        strokeWidth="1.5"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </span>
-                  <span>Book a Truck</span>
-                </button>
-              )}
-            />
+            <button
+              type="button"
+              onClick={openBooking}
+              className="group inline-flex items-center gap-3 rounded-full bg-[#CC1A1A] py-2 pl-2 pr-7 text-sm font-semibold tracking-wide text-white shadow-lg shadow-black/15 transition-all duration-300 ease-in-out hover:scale-[1.02] hover:bg-[#1A5FCC] active:scale-[0.98] active:bg-[#1A5FCC] sm:pr-8 sm:text-base"
+            >
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white text-[#111111]">
+                <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5" aria-hidden>
+                  <path
+                    d="M3 7h10v8H3V7zm10 3h4l3 3v2h-7v-5zM7 18a1.6 1.6 0 100-3.2A1.6 1.6 0 007 18zm10 0a1.6 1.6 0 100-3.2 1.6 1.6 0 000 3.2z"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </span>
+              <span>Book a Truck</span>
+            </button>
             <PillButton href="/services" variant="primary">
               View Services
             </PillButton>

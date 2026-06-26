@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { PillButton } from "@/components/PillButton";
+import { useTruckBooking } from "@/components/TruckBookingProvider";
 
 const links = [
   { href: "/services", label: "Services" },
@@ -14,6 +15,7 @@ const links = [
 
 export function Navbar() {
   const pathname = usePathname();
+  const { openBooking } = useTruckBooking();
 
   return (
     <header className="fixed top-0 z-50 w-full border-b-2 border-pmg-red bg-white shadow-[0_2px_12px_rgba(0,0,0,0.08)]">
@@ -34,8 +36,8 @@ export function Navbar() {
             </Link>
             <div className="shrink-0 sm:hidden">
               <PillButton
-                href="/contact"
                 variant="primary"
+                onClick={openBooking}
                 className="!py-1.5 !pl-1.5 !pr-5 !text-xs !whitespace-nowrap"
               >
                 Get Quote
@@ -62,8 +64,8 @@ export function Navbar() {
 
           <div className="hidden shrink-0 sm:block">
             <PillButton
-              href="/contact"
               variant="primary"
+              onClick={openBooking}
               className="!whitespace-nowrap"
             >
               Get Quote

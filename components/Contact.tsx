@@ -114,22 +114,6 @@ function useWorkingHoursStatus(): boolean | null {
   return isOpen;
 }
 
-function WhatsAppFloatingButton() {
-  return (
-    <a
-      href={`https://wa.me/${WHATSAPP_NUMBER}`}
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label="Chat with us on WhatsApp"
-      className="group fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_6px_20px_rgba(0,0,0,0.25)] transition hover:scale-105 hover:brightness-95"
-    >
-      <WhatsAppGlyph className="h-7 w-7" />
-      <span className="pointer-events-none absolute right-full mr-3 whitespace-nowrap rounded-md bg-[#111111] px-3 py-1.5 text-xs font-semibold text-white opacity-0 shadow-lg transition group-hover:opacity-100">
-        Chat with us on WhatsApp
-      </span>
-    </a>
-  );
-}
 
 export function Contact() {
   const isOpen = useWorkingHoursStatus();
@@ -332,8 +316,6 @@ export function Contact() {
           </div>
         </div>
       </motion.section>
-
-      <WhatsAppFloatingButton />
     </>
   );
 }

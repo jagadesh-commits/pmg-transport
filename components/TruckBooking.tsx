@@ -86,10 +86,17 @@ function todayISO(): string {
 
 export function TruckBooking({
   trigger,
+  isOpen: controlledIsOpen,
+  onOpenChange,
 }: {
-  trigger: (open: () => void) => ReactNode;
+  trigger?: (open: () => void) => ReactNode;
+  isOpen?: boolean;
+  onOpenChange?: (open: boolean) => void;
 }) {
-  const [isOpen, setIsOpen] = useState(false);
+  const [internalOpen, setInternalOpen] = useState(false);
+  const isControlled = controlledIsOpen !== undefined && onOpenChange !== undefined;
+  const isOpen = isControlled ? controlledIsOpen : internalOpen;
+  const setIsOpen = isControlled ? onOpenChange : setInternalOpen;
   const [step, setStep] = useState<Step>(0);
 
   const pickup = PICKUP_LOCATION;
@@ -200,7 +207,7 @@ export function TruckBooking({
 
   return (
     <>
-      {trigger(open)}
+      {trigger?.(open)}
 
       <AnimatePresence>
         {isOpen && (

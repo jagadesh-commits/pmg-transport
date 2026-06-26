@@ -26,6 +26,7 @@ type PillButtonProps = {
   variant: "primary" | "outline" | "onDark";
   className?: string;
   type?: "button" | "submit";
+  onClick?: () => void;
 };
 
 export function PillButton({
@@ -34,6 +35,7 @@ export function PillButton({
   variant,
   className = "",
   type = "button",
+  onClick,
 }: PillButtonProps) {
   const base =
     "group inline-flex items-center gap-3 rounded-full py-2 pl-2 pr-7 text-sm font-semibold tracking-wide transition-all duration-300 ease-in-out hover:scale-[1.02] active:scale-[0.98] sm:text-base sm:pr-8";
@@ -71,5 +73,9 @@ export function PillButton({
     );
   }
 
-  return <button type={type} className={cls}>{inner}</button>;
+  return (
+    <button type={type} className={cls} onClick={onClick}>
+      {inner}
+    </button>
+  );
 }
