@@ -3,6 +3,12 @@
 import { useMemo, useState } from "react";
 import type { ReactNode } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import {
+  calculateFare,
+  FARE_RATES,
+  getFareRate,
+  PICKUP_LOCATION,
+} from "@/lib/fareRates";
 
 type TruckType = {
   id: string;
@@ -32,41 +38,6 @@ const GOODS_TYPES = [
   "Billets & Ingots",
   "Other Steel Products",
 ];
-
-const PICKUP_LOCATION = "Manali Steel Yard";
-
-type Destination = {
-  name: string;
-  upTo10Tons: number;
-  perTonAbove10: number;
-};
-
-const DESTINATIONS: Destination[] = [
-  { name: "Chengalpattu & Madhavaram", upTo10Tons: 9000, perTonAbove10: 900 },
-  { name: "Kanchipuram", upTo10Tons: 9000, perTonAbove10: 900 },
-  { name: "Maraimalai Nagar", upTo10Tons: 8000, perTonAbove10: 800 },
-  { name: "Sriperumbudur", upTo10Tons: 5000, perTonAbove10: 500 },
-  { name: "Oragadam", upTo10Tons: 6000, perTonAbove10: 600 },
-  { name: "Poothandi", upTo10Tons: 4500, perTonAbove10: 450 },
-  { name: "Ambattur & Kattur, Chennai", upTo10Tons: 4500, perTonAbove10: 450 },
-  { name: "Vichoor", upTo10Tons: 2500, perTonAbove10: 250 },
-  { name: "Vyasarpadi", upTo10Tons: 2500, perTonAbove10: 250 },
-  { name: "Ernavoor", upTo10Tons: 2000, perTonAbove10: 200 },
-  { name: "Thiruttani", upTo10Tons: 8000, perTonAbove10: 800 },
-  { name: "Perungudi", upTo10Tons: 5000, perTonAbove10: 500 },
-  { name: "Velachery", upTo10Tons: 5000, perTonAbove10: 500 },
-  { name: "Tambaram", upTo10Tons: 5500, perTonAbove10: 550 },
-  { name: "Thiruporur", upTo10Tons: 8000, perTonAbove10: 800 },
-  { name: "Tiruvallur & Kakkalur", upTo10Tons: 5000, perTonAbove10: 500 },
-  { name: "Guindy", upTo10Tons: 5000, perTonAbove10: 500 },
-  { name: "Sri City", upTo10Tons: 8000, perTonAbove10: 800 },
-];
-
-function computeFare(dest: Destination, weightKg: number): number {
-  const tons = weightKg / 1000;
-  if (tons <= 10) return dest.upTo10Tons;
-  return dest.upTo10Tons + Math.ceil(tons - 10) * dest.perTonAbove10;
-}
 
 function formatINR(value: number): string {
   return "\u20B9" + Math.round(value).toLocaleString("en-IN");
@@ -132,14 +103,17 @@ export function TruckBooking({
   const [mobile, setMobile] = useState("");
   const [error, setError] = useState("");
 
-  const destination = DESTINATIONS.find((d) => d.name === drop) ?? null;
+  const destination = getFareRate(drop);
   const truck = TRUCK_TYPES.find((t) => t.id === truckId) ?? null;
 
   const fare = useMemo(() => {
     const weightKg = Number(weight);
-    if (!destination || !weightKg || weightKg <= 0) return null;
-    return computeFare(destination, weightKg);
-  }, [destination, weight]);
+    if (!drop || !weightKg || weightKg <= 0) return null;
+    return calculateFare(drop, weightKg);
+  }, [drop, weight]);
+
+  const fareLabel =
+    fare !== null ? formatINR(fare) : "Contact us for a custom quote";
 
   function buildMessage(): string {
     const lines = [
@@ -157,7 +131,7 @@ export function TruckBooking({
       `*Goods:* ${goods}`,
       `*Weight:* ${weight} Kg`,
       "",
-      `*Estimated Fare:* ${fare !== null ? formatINR(fare) : "-"}`,
+      `*Estimated Fare:* ${fareLabel}`,
       "_System-generated estimate. Final rate confirmed by our team (10 am - 6 pm)._",
     ];
     return lines.filter((l) => l !== "").join("\n");
@@ -331,24 +305,30 @@ export function TruckBooking({
                         <option value="" disabled>
                           Select destination
                         </option>
-                        {DESTINATIONS.map((d) => (
-                          <option key={d.name} value={d.name}>
-                            {d.name}
+                        {FARE_RATES.map((d) => (
+                          <option key={d.destination} value={d.destination}>
+                            {d.destination}
                           </option>
                         ))}
                       </select>
                     </div>
-                    {destination && (
+                    {destination ? (
                       <p className="rounded-lg bg-pmg-surface px-4 py-3 text-sm text-pmg-muted">
-                        Base rate (up to 10 tons):{" "}
+                        Rate for 10 tons:{" "}
                         <span className="font-bold text-pmg-text">
-                          {formatINR(destination.upTo10Tons)}
+                          {formatINR(destination.rateFor10Tons)}
                         </span>
                         <span className="block text-xs">
-                          + {formatINR(destination.perTonAbove10)} per extra ton
+                          + {formatINR(destination.perExtraTon)} per extra ton
                           above 10 tons
                         </span>
                       </p>
+                    ) : (
+                      drop && (
+                        <p className="rounded-lg bg-pmg-surface px-4 py-3 text-sm font-medium text-pmg-text">
+                          Contact us for a custom quote
+                        </p>
+                      )
                     )}
                   </div>
                 )}
@@ -483,7 +463,7 @@ export function TruckBooking({
                   </div>
                 )}
 
-                {step === 3 && truck && fare !== null && (
+                {step === 3 && truck && (
                   <div className="space-y-5">
                     <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
                       {[
@@ -531,7 +511,11 @@ export function TruckBooking({
                         </span>
                       </div>
                       <p className="mt-2 font-heading text-2xl font-black text-pmg-red">
-                        Estimated Fare: {formatINR(fare)}
+                        {fare !== null ? (
+                          <>Estimated Fare: {formatINR(fare)}</>
+                        ) : (
+                          <>Contact us for a custom quote</>
+                        )}
                       </p>
                       <p className="mt-2 text-xs text-pmg-muted">
                         System-generated estimate. Final rate is confirmed by our
