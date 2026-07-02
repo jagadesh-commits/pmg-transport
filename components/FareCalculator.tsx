@@ -34,16 +34,32 @@ function formatINR(value: number): string {
   return "\u20B9" + Math.round(value).toLocaleString("en-IN");
 }
 
+type WeightUnit = "Tons" | "KG";
+
 type Result = {
   destination: string;
-  weight: number;
+  weightValue: number;
+  weightUnit: WeightUnit;
+  weightInTons: number;
   low: number;
   high: number;
 };
 
+function formatWeightForMessage(result: Result): string {
+  if (result.weightUnit === "Tons") {
+    return `${result.weightValue} Tons`;
+  }
+  const tonsLabel =
+    result.weightInTons % 1 === 0
+      ? String(result.weightInTons)
+      : result.weightInTons.toFixed(2).replace(/\.?0+$/, "");
+  return `${result.weightValue} KG (${tonsLabel} Tons)`;
+}
+
 export function FareCalculatorCard() {
   const [destination, setDestination] = useState("");
   const [weight, setWeight] = useState("");
+  const [weightUnit, setWeightUnit] = useState<WeightUnit>("Tons");
   const [error, setError] = useState("");
   const [result, setResult] = useState<Result | null>(null);
 
@@ -53,8 +69,8 @@ export function FareCalculatorCard() {
       setResult(null);
       return;
     }
-    const tons = Number(weight);
-    if (!weight.trim() || !tons || tons <= 0) {
+    const value = Number(weight);
+    if (!weight.trim() || !value || value <= 0) {
       setError("Please enter valid weight");
       setResult(null);
       return;
@@ -62,12 +78,18 @@ export function FareCalculatorCard() {
 
     setError("");
 
+    const weightInTons = weightUnit === "KG" ? value / 1000 : value;
     const rate = rates[destination];
-    const fare = tons <= 10 ? rate.base : rate.base + (tons - 10) * rate.extra;
+    const fare =
+      weightInTons <= 10
+        ? rate.base
+        : rate.base + (weightInTons - 10) * rate.extra;
 
     setResult({
       destination,
-      weight: tons,
+      weightValue: value,
+      weightUnit,
+      weightInTons,
       low: fare,
       high: Math.round(fare * 1.1),
     });
@@ -75,7 +97,7 @@ export function FareCalculatorCard() {
 
   const whatsappHref = result
     ? `https://wa.me/${BUSINESS_PHONE}?text=${encodeURIComponent(
-        `Hi PMG Transport, I need a truck from Manali Steel Yard to ${result.destination} for ${result.weight} tons. Estimated fare: ${formatINR(result.low)} - ${formatINR(result.high)}`,
+        `Hi PMG Transport, I need a truck from Manali Steel Yard to ${result.destination} for ${formatWeightForMessage(result)}. Estimated fare: ${formatINR(result.low)} - ${formatINR(result.high)}`,
       )}`
     : "#";
 
@@ -122,18 +144,24 @@ export function FareCalculatorCard() {
             </select>
           </div>
 
-          <div className={`${fieldWrap} bg-white`}>
-            <span className="shrink-0 text-base leading-none" aria-hidden>
-              🚛
-            </span>
+          <div className="flex gap-3">
             <input
               type="number"
               min={1}
               value={weight}
               onChange={(e) => setWeight(e.target.value)}
-              placeholder="Weight in tons"
-              className="w-full bg-transparent text-sm text-pmg-text outline-none placeholder:text-pmg-muted"
+              placeholder="Enter weight"
+              className="w-[65%] rounded-xl border border-[#E0E0E0] bg-white px-4 py-3 text-sm text-pmg-text outline-none placeholder:text-pmg-muted"
             />
+            <select
+              value={weightUnit}
+              onChange={(e) => setWeightUnit(e.target.value as WeightUnit)}
+              className="w-[35%] rounded-xl border border-[#E0E0E0] bg-white px-4 py-3 text-sm text-pmg-text outline-none"
+              aria-label="Weight unit"
+            >
+              <option value="Tons">Tons</option>
+              <option value="KG">KG</option>
+            </select>
           </div>
         </div>
 
