@@ -5,6 +5,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { SectionBadge } from "@/components/SectionBadge";
 import { PillButton } from "@/components/PillButton";
+import { FareCalculatorCard } from "@/components/FareCalculator";
 import { useTruckBooking } from "@/components/TruckBookingProvider";
 
 const HERO_STRIP_IMAGES = [
@@ -99,73 +100,6 @@ function ShieldIcon() {
   );
 }
 
-function ShowcasePanels({ onBookTruck }: { onBookTruck: () => void }) {
-  return (
-    <div className="relative mx-auto h-[420px] w-full max-w-lg sm:h-[480px] lg:mx-0">
-      <div className="absolute right-4 top-6 w-[72%] rotate-[8deg] overflow-hidden rounded-2xl border border-pmg-border bg-white shadow-[0_4px_24px_rgba(0,0,0,0.08)] sm:right-0">
-        <div className="aspect-[4/3] bg-gradient-to-br from-pmg-surface to-white">
-          <svg
-            viewBox="0 0 400 260"
-            className="h-full w-full text-pmg-text"
-            aria-hidden
-          >
-            <defs>
-              <linearGradient id="p1" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stopColor="#CC1A1A" stopOpacity="0.35" />
-                <stop offset="100%" stopColor="#111" stopOpacity="0.04" />
-              </linearGradient>
-            </defs>
-            <rect width="400" height="260" fill="url(#p1)" opacity="0.5" />
-            <path
-              d="M40 180h260l40-60h60v60H40v0z"
-              fill="#F5F5F5"
-              stroke="#E0E0E0"
-              strokeWidth="1"
-            />
-            <rect x="50" y="120" width="120" height="50" rx="4" fill="#CC1A1A" opacity="0.85" />
-            <circle cx="90" cy="190" r="18" fill="#424242" stroke="#fff" strokeWidth="2" opacity="0.5" />
-            <circle cx="220" cy="190" r="18" fill="#424242" stroke="#fff" strokeWidth="2" opacity="0.5" />
-          </svg>
-        </div>
-        <p className="border-t border-pmg-border bg-pmg-surface px-4 py-3 text-xs font-medium uppercase tracking-wider text-pmg-muted">
-          Fleet tracking · Live ETA
-        </p>
-      </div>
-
-      <div className="absolute right-[18%] top-[38%] w-[68%] -rotate-[6deg] overflow-hidden rounded-2xl border border-pmg-border bg-white shadow-[0_4px_24px_rgba(0,0,0,0.06)]">
-        <div className="aspect-[4/3] bg-gradient-to-tr from-white to-pmg-surface">
-          <svg viewBox="0 0 400 260" className="h-full w-full" aria-hidden>
-            <path
-              d="M0 200 Q200 40 400 200"
-              fill="none"
-              stroke="rgba(0,0,0,0.08)"
-              strokeWidth="4"
-            />
-            <rect x="120" y="96" width="160" height="56" rx="6" fill="rgba(204,26,26,0.2)" stroke="#E0E0E0" />
-            <path d="M140 128h120" stroke="rgba(0,0,0,0.12)" strokeWidth="2" strokeDasharray="8 6" />
-          </svg>
-        </div>
-      </div>
-
-      <button
-        type="button"
-        onClick={onBookTruck}
-        className="absolute bottom-4 right-[28%] w-[55%] rotate-[3deg] overflow-hidden rounded-2xl border border-pmg-border bg-white p-4 text-left shadow-[0_4px_24px_rgba(0,0,0,0.06)]"
-      >
-        <div className="flex items-center gap-3">
-          <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[rgba(204,26,26,0.15)] text-pmg-red">
-            <ShieldIcon />
-          </span>
-          <div>
-            <p className="text-sm font-semibold text-pmg-text">Book a Truck</p>
-            <p className="text-xs text-pmg-muted">Cross-dock & bonded storage</p>
-          </div>
-        </div>
-      </button>
-    </div>
-  );
-}
-
 const headlineStyle: CSSProperties = {
   fontSize: "clamp(48px, 7vw, 96px)",
   fontWeight: 900,
@@ -184,7 +118,7 @@ export function Hero() {
       />
 
       <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-1 flex-col gap-14 px-4 py-16 sm:px-6 lg:flex-row lg:items-center lg:gap-10 lg:px-8 lg:py-20">
-        <div className="max-w-xl flex-1">
+        <div className="w-full max-w-xl lg:w-[55%]">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
@@ -248,12 +182,12 @@ export function Hero() {
         </div>
 
         <motion.div
-          className="relative z-10 flex flex-1 justify-center lg:justify-end"
+          className="relative z-10 flex w-full justify-center lg:w-[45%] lg:justify-end"
           initial={{ opacity: 0, x: 40 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.25, duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
         >
-          <ShowcasePanels onBookTruck={openBooking} />
+          <FareCalculatorCard />
         </motion.div>
       </div>
     </section>
