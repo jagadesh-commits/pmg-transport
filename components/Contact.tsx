@@ -160,13 +160,13 @@ export function Contact() {
               >
                 <a
                   href="tel:+919498073311"
-                  className="mt-1 block text-sm text-pmg-muted transition hover:text-pmg-red"
+                  className="mt-1 block text-sm text-pmg-muted no-underline transition-[color] duration-200 ease-in-out hover:text-[#CC1A1A]"
                 >
                   +91 94980 73311
                 </a>
                 <a
                   href="tel:+919087273311"
-                  className="mt-1 block text-sm text-pmg-muted transition hover:text-pmg-red"
+                  className="mt-1 block text-sm text-pmg-muted no-underline transition-[color] duration-200 ease-in-out hover:text-[#CC1A1A]"
                 >
                   +91 90872 73311
                 </a>
