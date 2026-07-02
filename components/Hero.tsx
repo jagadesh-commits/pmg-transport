@@ -2,10 +2,10 @@
 
 import type { CSSProperties } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { motion } from "framer-motion";
 import { SectionBadge } from "@/components/SectionBadge";
 import { PillButton } from "@/components/PillButton";
+import { useTruckBooking } from "@/components/TruckBookingProvider";
 
 const HERO_STRIP_IMAGES = [
   {
@@ -99,7 +99,7 @@ function ShieldIcon() {
   );
 }
 
-function ShowcasePanels() {
+function ShowcasePanels({ onBookTruck }: { onBookTruck: () => void }) {
   return (
     <div className="relative mx-auto h-[420px] w-full max-w-lg sm:h-[480px] lg:mx-0">
       <div className="absolute right-4 top-6 w-[72%] rotate-[8deg] overflow-hidden rounded-2xl border border-pmg-border bg-white shadow-[0_4px_24px_rgba(0,0,0,0.08)] sm:right-0">
@@ -147,17 +147,21 @@ function ShowcasePanels() {
         </div>
       </div>
 
-      <div className="absolute bottom-4 right-[28%] w-[55%] rotate-[3deg] overflow-hidden rounded-2xl border border-pmg-border bg-white p-4 shadow-[0_4px_24px_rgba(0,0,0,0.06)]">
+      <button
+        type="button"
+        onClick={onBookTruck}
+        className="absolute bottom-4 right-[28%] w-[55%] rotate-[3deg] overflow-hidden rounded-2xl border border-pmg-border bg-white p-4 text-left shadow-[0_4px_24px_rgba(0,0,0,0.06)]"
+      >
         <div className="flex items-center gap-3">
           <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[rgba(204,26,26,0.15)] text-pmg-red">
             <ShieldIcon />
           </span>
           <div>
-            <p className="text-sm font-semibold text-pmg-text">Warehousing</p>
+            <p className="text-sm font-semibold text-pmg-text">Book a Truck</p>
             <p className="text-xs text-pmg-muted">Cross-dock & bonded storage</p>
           </div>
         </div>
-      </div>
+      </button>
     </div>
   );
 }
@@ -168,6 +172,8 @@ const headlineStyle: CSSProperties = {
 };
 
 export function Hero() {
+  const { openBooking } = useTruckBooking();
+
   return (
     <section className="relative flex min-h-dvh flex-col overflow-hidden bg-pmg-bg pt-28 sm:pt-[5.25rem] md:pt-[72px]">
       <HeroImageStrip />
@@ -218,24 +224,23 @@ export function Hero() {
             transition={{ delay: 0.45, duration: 0.55 }}
             className="mt-10 flex flex-wrap gap-4"
           >
-            <Link href="/contact">
-              <button
-                type="button"
-                className="group inline-flex items-center gap-3 rounded-full bg-[#CC1A1A] py-2 pl-2 pr-7 text-sm font-semibold tracking-wide text-white shadow-lg shadow-black/15 transition-all duration-300 ease-in-out hover:scale-[1.02] hover:bg-[#1A5FCC] active:scale-[0.98] active:bg-[#1A5FCC] sm:pr-8 sm:text-base"
-              >
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white text-[#111111]">
-                  <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5" aria-hidden>
-                    <path
-                      d="M3 7h10v8H3V7zm10 3h4l3 3v2h-7v-5zM7 18a1.6 1.6 0 100-3.2A1.6 1.6 0 007 18zm10 0a1.6 1.6 0 100-3.2 1.6 1.6 0 000 3.2z"
-                      stroke="currentColor"
-                      strokeWidth="1.5"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </span>
-                <span>Book a Truck</span>
-              </button>
-            </Link>
+            <button
+              type="button"
+              onClick={openBooking}
+              className="group inline-flex items-center gap-3 rounded-full bg-[#CC1A1A] py-2 pl-2 pr-7 text-sm font-semibold tracking-wide text-white shadow-lg shadow-black/15 transition-all duration-300 ease-in-out hover:scale-[1.02] hover:bg-[#1A5FCC] active:scale-[0.98] active:bg-[#1A5FCC] sm:pr-8 sm:text-base"
+            >
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white text-[#111111]">
+                <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5" aria-hidden>
+                  <path
+                    d="M3 7h10v8H3V7zm10 3h4l3 3v2h-7v-5zM7 18a1.6 1.6 0 100-3.2A1.6 1.6 0 007 18zm10 0a1.6 1.6 0 100-3.2 1.6 1.6 0 000 3.2z"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </span>
+              <span>Book a Truck</span>
+            </button>
             <PillButton href="/services" variant="primary">
               View Services
             </PillButton>
@@ -248,7 +253,7 @@ export function Hero() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.25, duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
         >
-          <ShowcasePanels />
+          <ShowcasePanels onBookTruck={openBooking} />
         </motion.div>
       </div>
     </section>
