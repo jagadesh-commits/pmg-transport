@@ -26,13 +26,31 @@ const LocationIcon = (
 );
 
 const PhoneIcon = (
-  <path
-    d="M4 6h4l2 5-2 2a12 12 0 006 6l2-2 5 2v4a2 2 0 01-2 2 10 10 0 01-10-10 2 2 0 012-2z"
-    stroke="currentColor"
-    strokeWidth="1.6"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  />
+  <>
+    <rect
+      x="5"
+      y="2"
+      width="14"
+      height="20"
+      rx="2"
+      ry="2"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <line
+      x1="12"
+      y1="18"
+      x2="12.01"
+      y2="18"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </>
 );
 
 const ClockIcon = (
