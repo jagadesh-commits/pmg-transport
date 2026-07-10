@@ -4,6 +4,7 @@ import "./globals.css";
 import { AppShell } from "@/components/AppShell";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { PageLoader } from "@/components/PageLoader";
 import BackToTop from "@/components/BackToTop";
 
 const inter = Inter({
@@ -37,6 +38,7 @@ export default function RootLayout({
       className={`${inter.variable} ${outfit.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-pmg-bg text-pmg-text">
+        <PageLoader />
         <AppShell>
           <Navbar />
           <div className="flex flex-1 flex-col">{children}</div>
