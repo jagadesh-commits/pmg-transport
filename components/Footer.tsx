@@ -5,11 +5,11 @@ import Link from "next/link";
 import type { SVGProps } from "react";
 
 const services = [
-  "Heavy Equipment Transport",
+  "Steel Product Transport",
   "Steel Coil Transport",
   "Logistics & Warehousing",
   "Project Cargo",
-  "Local Delivery",
+  "Mill to Fabricator Delivery",
 ];
 
 const quickLinks = [
@@ -21,64 +21,6 @@ const quickLinks = [
 ];
 
 type IconProps = SVGProps<SVGSVGElement>;
-
-function FacebookIcon({ className, ...props }: IconProps) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={className}
-      aria-hidden
-      {...props}
-    >
-      <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
-    </svg>
-  );
-}
-
-function InstagramIcon({ className, ...props }: IconProps) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={className}
-      aria-hidden
-      {...props}
-    >
-      <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-      <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" />
-      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-    </svg>
-  );
-}
-
-function LinkedinIcon({ className, ...props }: IconProps) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={className}
-      aria-hidden
-      {...props}
-    >
-      <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6z" />
-      <rect x="2" y="9" width="4" height="12" />
-      <circle cx="4" cy="4" r="2" />
-    </svg>
-  );
-}
 
 function MessageCircleIcon({ className, ...props }: IconProps) {
   return (
@@ -99,9 +41,6 @@ function MessageCircleIcon({ className, ...props }: IconProps) {
 }
 
 const socialLinks = [
-  { href: "#", label: "Facebook", icon: FacebookIcon },
-  { href: "#", label: "Instagram", icon: InstagramIcon },
-  { href: "#", label: "LinkedIn", icon: LinkedinIcon },
   {
     href: "https://wa.me/919498073311",
     label: "WhatsApp",
@@ -128,9 +67,10 @@ export function Footer() {
             Trusted Since 2010
           </p>
           <p className="mt-4 text-sm leading-relaxed text-white/80">
-            Local steel transport and logistics across Chennai, Thiruvallur and
-            Kanchipuram. Your trusted partner for heavy equipment and steel cargo
-            movement.
+            Chennai&apos;s dedicated steel logistics company — moving steel coils,
+            TMT bars, sheets &amp; plates, pipes &amp; tubes, and structural sections
+            from Manali Steel Yard across Chennai, Thiruvallur, and Kanchipuram.
+            Trusted since 2010.
           </p>
         </div>
 
@@ -208,7 +148,7 @@ export function Footer() {
       </div>
 
       <div className="mx-auto mt-12 max-w-7xl border-t border-white/10 pt-5 text-center text-[13px] text-white/50 sm:text-left">
-        <p>© 2026 PMG Transport Pvt. Ltd. All Rights Reserved.</p>
+        <p>© 2026 PMG Transport Private Limited. All Rights Reserved.</p>
       </div>
     </footer>
   );
