@@ -31,7 +31,7 @@ export function FloatingActions() {
 
   return (
     <div
-      className="pointer-events-none fixed bottom-5 right-5 z-50 flex flex-col items-end gap-3.5 pb-[env(safe-area-inset-bottom)] sm:bottom-6 sm:right-6"
+      className="pointer-events-none fixed bottom-5 right-5 z-50 flex h-fit w-fit max-w-none flex-col items-end gap-3.5 pb-[env(safe-area-inset-bottom)] sm:bottom-6 sm:right-6"
       aria-label="Quick actions"
     >
       <BackToTopButton />

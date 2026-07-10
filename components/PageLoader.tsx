@@ -7,6 +7,18 @@ import { AnimatePresence, motion } from "framer-motion";
 
 const MIN_VISIBLE_MS = 400;
 const FADE_DURATION = 0.22;
+const MAX_VISIBLE_MS = 2000;
+
+const loaderVariants = {
+  hidden: {
+    opacity: 0,
+    pointerEvents: "none" as const,
+  },
+  visible: {
+    opacity: 1,
+    pointerEvents: "auto" as const,
+  },
+};
 
 function isInternalNavLink(anchor: HTMLAnchorElement): boolean {
   if (!anchor.href) return false;
@@ -25,21 +37,21 @@ export function PageLoader() {
   const [visible, setVisible] = useState(false);
   const shownAt = useRef(0);
   const pendingHide = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const isNavigating = useRef(false);
+  const safetyHide = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const show = useCallback(() => {
+  const clearTimers = useCallback(() => {
     if (pendingHide.current) {
       clearTimeout(pendingHide.current);
       pendingHide.current = null;
     }
-    shownAt.current = Date.now();
-    isNavigating.current = true;
-    setVisible(true);
+    if (safetyHide.current) {
+      clearTimeout(safetyHide.current);
+      safetyHide.current = null;
+    }
   }, []);
 
   const hide = useCallback(() => {
-    if (!isNavigating.current) return;
-    isNavigating.current = false;
+    clearTimers();
 
     const elapsed = Date.now() - shownAt.current;
     const delay = Math.max(0, MIN_VISIBLE_MS - elapsed);
@@ -48,7 +60,18 @@ export function PageLoader() {
       setVisible(false);
       pendingHide.current = null;
     }, delay);
-  }, []);
+  }, [clearTimers]);
+
+  const show = useCallback(() => {
+    clearTimers();
+    shownAt.current = Date.now();
+    setVisible(true);
+
+    safetyHide.current = setTimeout(() => {
+      setVisible(false);
+      safetyHide.current = null;
+    }, MAX_VISIBLE_MS);
+  }, [clearTimers]);
 
   useEffect(() => {
     hide();
@@ -70,18 +93,19 @@ export function PageLoader() {
     return () => {
       document.removeEventListener("click", onClick, true);
       window.removeEventListener("popstate", onPopState);
-      if (pendingHide.current) clearTimeout(pendingHide.current);
+      clearTimers();
     };
-  }, [show]);
+  }, [show, clearTimers]);
 
   return (
     <AnimatePresence>
       {visible && (
         <motion.div
           key="page-loader"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
+          variants={loaderVariants}
+          initial="hidden"
+          animate="visible"
+          exit="hidden"
           transition={{ duration: FADE_DURATION, ease: "easeInOut" }}
           className="fixed inset-0 z-[200] flex items-center justify-center bg-[#111111]"
           role="status"

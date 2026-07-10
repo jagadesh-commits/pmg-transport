@@ -19,7 +19,7 @@ export function Navbar() {
   const { openBooking } = useTruckBooking();
 
   return (
-    <header className="fixed top-0 z-50 w-full border-b-2 border-pmg-red bg-white shadow-[0_2px_12px_rgba(0,0,0,0.08)]">
+    <header className="fixed top-0 z-[60] w-full border-b-2 border-pmg-red bg-white shadow-[0_2px_12px_rgba(0,0,0,0.08)]">
       <div className="mx-auto max-w-7xl px-4 py-3 sm:px-6 lg:px-8">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
           <div className="flex items-center justify-between gap-3 sm:contents">
