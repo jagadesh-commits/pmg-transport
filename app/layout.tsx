@@ -5,6 +5,7 @@ import { AppShell } from "@/components/AppShell";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { PageLoader } from "@/components/PageLoader";
+import { MobileActionBar } from "@/components/MobileActionBar";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -40,8 +41,11 @@ export default function RootLayout({
         <PageLoader />
         <AppShell>
           <Navbar />
-          <div className="flex flex-1 flex-col">{children}</div>
-          <Footer />
+          <div className="flex flex-1 flex-col pb-20 md:pb-0">
+            <div className="flex flex-1 flex-col">{children}</div>
+            <Footer />
+          </div>
+          <MobileActionBar />
         </AppShell>
       </body>
     </html>

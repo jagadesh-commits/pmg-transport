@@ -182,6 +182,7 @@ export function Hero() {
         </div>
 
         <motion.div
+          id="calculator"
           className="relative z-10 flex w-full justify-center lg:w-[45%] lg:justify-end"
           initial={{ opacity: 0, x: 40 }}
           animate={{ opacity: 1, x: 0 }}

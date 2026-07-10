@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-export default function BackToTopButton() {
+export default function BackToTopButton({ className = "" }: { className?: string }) {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [visible, setVisible] = useState(false);
 
@@ -36,7 +36,7 @@ export default function BackToTopButton() {
       type="button"
       onClick={handleClick}
       aria-label="Back to top"
-      className="pointer-events-auto flex h-14 w-14 items-center justify-center transition-opacity duration-300 ease-in-out"
+      className={`pointer-events-auto flex h-14 w-14 items-center justify-center transition-opacity duration-300 ease-in-out ${className}`}
     >
       <svg width="48" height="48" viewBox="0 0 48 48">
         <circle

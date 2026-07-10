@@ -34,7 +34,7 @@ export function FloatingActions() {
       className="pointer-events-none fixed bottom-5 right-5 z-50 flex h-fit w-fit max-w-none flex-col items-end gap-3.5 pb-[env(safe-area-inset-bottom)] sm:bottom-6 sm:right-6"
       aria-label="Quick actions"
     >
-      <BackToTopButton />
+      <BackToTopButton className="max-md:fixed max-md:bottom-20 max-md:right-5 max-md:z-50 md:relative md:bottom-auto md:right-auto" />
 
       <button
         type="button"
@@ -54,7 +54,7 @@ export function FloatingActions() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Chat with us on WhatsApp"
-        className="pointer-events-auto group relative flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_6px_20px_rgba(0,0,0,0.25)] transition hover:scale-105 hover:brightness-95"
+        className="pointer-events-auto group relative hidden h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_6px_20px_rgba(0,0,0,0.25)] transition hover:scale-105 hover:brightness-95 md:flex"
       >
         <WhatsAppGlyph className="h-7 w-7" />
         <span className="pointer-events-none absolute right-full mr-3 hidden whitespace-nowrap rounded-md bg-[#111111] px-3 py-1.5 text-xs font-semibold text-white opacity-0 shadow-lg transition group-hover:opacity-100 sm:block">
