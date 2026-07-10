@@ -7,6 +7,7 @@ import { PillButton } from "@/components/PillButton";
 import { useTruckBooking } from "@/components/TruckBookingProvider";
 
 const links = [
+  { href: "/", label: "Home" },
   { href: "/services", label: "Services" },
   { href: "/about", label: "About" },
   { href: "/#process", label: "Process" },
@@ -28,7 +29,7 @@ export function Navbar() {
                 alt="PMG Transports"
                 width={260}
                 height={140}
-                className="h-16 w-auto object-contain sm:h-[68px]"
+                className="h-12 w-auto object-contain sm:h-16 md:h-[68px]"
                 style={{ width: "auto" }}
                 priority
                 unoptimized
@@ -45,14 +46,14 @@ export function Navbar() {
             </div>
           </div>
 
-          <nav className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 sm:flex-1 sm:justify-center sm:gap-x-6 md:gap-x-8">
+          <nav className="scrollbar-hide -mx-4 flex items-center gap-x-3 overflow-x-auto px-4 pb-0.5 sm:mx-0 sm:flex-1 sm:flex-wrap sm:justify-center sm:overflow-visible sm:gap-x-6 sm:px-0 md:gap-x-8">
             {links.map(({ href, label }) => {
               const active = href.includes("#") ? false : pathname === href;
               return (
                 <Link
-                  key={href}
+                  key={label}
                   href={href}
-                  className={`shrink-0 whitespace-nowrap text-sm font-medium text-[#444444] transition-colors hover:text-pmg-red ${
+                  className={`shrink-0 whitespace-nowrap text-xs font-medium text-[#444444] transition-colors hover:text-pmg-red sm:text-sm ${
                     active ? "text-pmg-red" : ""
                   }`}
                 >

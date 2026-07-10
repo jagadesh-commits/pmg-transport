@@ -25,7 +25,7 @@ export function CTABand() {
         }}
         aria-hidden
       />
-      <div className="relative mx-auto flex max-w-7xl flex-col items-start justify-between gap-10 px-4 sm:px-6 lg:flex-row lg:items-center lg:px-8">
+      <div className="relative mx-auto flex max-w-7xl flex-col items-stretch justify-between gap-10 px-4 sm:px-6 lg:flex-row lg:items-center lg:px-8">
         <div className="max-w-2xl text-white">
           <h2 className="font-heading text-3xl font-extrabold uppercase leading-tight tracking-tight sm:text-4xl md:text-5xl">
             Ready to Move Your Cargo?
@@ -34,7 +34,7 @@ export function CTABand() {
             Get the best rates on heavy transport. Talk to our team today.
           </p>
         </div>
-        <PillButton href="/contact" variant="onDark">
+        <PillButton href="/contact" variant="onDark" className="w-full justify-center sm:w-auto">
           Request a Quote
         </PillButton>
       </div>

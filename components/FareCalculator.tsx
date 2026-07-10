@@ -105,7 +105,7 @@ export function FareCalculatorCard() {
     "flex items-center gap-3 rounded-xl border border-[#E0E0E0] px-4 py-3";
 
   return (
-    <div className="w-full max-w-[420px] overflow-hidden rounded-2xl bg-white shadow-2xl">
+    <div className="w-full max-w-[420px] overflow-hidden rounded-2xl bg-white shadow-2xl mx-auto lg:mx-0">
       <div className="bg-[#CC1A1A] px-4 py-3 text-center text-base font-bold text-white">
         📍 Check Truck Fare
       </div>

@@ -111,15 +111,15 @@ const socialLinks = [
 
 export function Footer() {
   return (
-    <footer className="bg-[#1a1a6e] text-white" style={{ padding: "60px 5%" }}>
+    <footer className="bg-[#111111] px-4 py-12 text-white sm:px-6 sm:py-16 lg:px-8 lg:py-[60px]">
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4 lg:gap-12">
-        <div>
+        <div className="text-center sm:text-left">
           <Image
-            src="/logo.png"
+            src="/pmg-transports-logo.png"
             alt="PMG Transports"
             height={80}
             width={160}
-            className="h-20 w-auto object-contain brightness-0 invert"
+            className="mx-auto h-20 w-auto object-contain sm:mx-0"
           />
           <p className="mt-4 font-heading text-lg font-bold tracking-wide text-white">
             PMG TRANSPORTS
@@ -134,7 +134,7 @@ export function Footer() {
           </p>
         </div>
 
-        <div>
+        <div className="text-center sm:text-left">
           <h3 className="text-base font-bold text-[#CC1A1A]">Services</h3>
           <ul className="mt-4 space-y-3">
             {services.map((service) => (
@@ -150,7 +150,7 @@ export function Footer() {
           </ul>
         </div>
 
-        <div>
+        <div className="text-center sm:text-left">
           <h3 className="text-base font-bold text-[#CC1A1A]">Quick Links</h3>
           <ul className="mt-4 space-y-3">
             {quickLinks.map((link) => (
@@ -166,17 +166,17 @@ export function Footer() {
           </ul>
         </div>
 
-        <div>
+        <div className="text-center sm:text-left">
           <h3 className="text-base font-bold text-[#CC1A1A]">Contact</h3>
           <div className="mt-4 space-y-3 text-sm leading-relaxed text-white/90">
-            <p>
+            <p className="flex flex-col gap-1 sm:block">
               <a
                 href="tel:+919498073311"
                 className="transition-colors duration-200 hover:text-[#CC1A1A]"
               >
                 +91 94980 73311
               </a>
-              <span className="text-white/60"> / </span>
+              <span className="hidden text-white/60 sm:inline"> / </span>
               <a
                 href="tel:+919087273311"
                 className="transition-colors duration-200 hover:text-[#CC1A1A]"
@@ -190,7 +190,7 @@ export function Footer() {
             </p>
           </div>
 
-          <div className="mt-6 flex gap-3">
+          <div className="mt-6 flex justify-center gap-3 sm:justify-start">
             {socialLinks.map(({ href, label, icon: Icon }) => (
               <a
                 key={label}
@@ -198,7 +198,7 @@ export function Footer() {
                 target={href.startsWith("http") ? "_blank" : undefined}
                 rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
                 aria-label={label}
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-[#111133] text-white transition-colors duration-200 hover:bg-[#CC1A1A]"
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition-colors duration-200 hover:bg-[#CC1A1A]"
               >
                 <Icon className="h-5 w-5" aria-hidden />
               </a>
@@ -207,10 +207,7 @@ export function Footer() {
         </div>
       </div>
 
-      <div
-        className="mx-auto mt-12 max-w-7xl border-t border-white/10 pt-5"
-        style={{ fontSize: "13px", color: "rgba(255,255,255,0.5)" }}
-      >
+      <div className="mx-auto mt-12 max-w-7xl border-t border-white/10 pt-5 text-center text-[13px] text-white/50 sm:text-left">
         <p>© 2026 PMG Transport Pvt. Ltd. All Rights Reserved.</p>
       </div>
     </footer>

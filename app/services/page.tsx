@@ -38,7 +38,7 @@ function DocIcon() {
 
 export default function ServicesPage() {
   return (
-    <main className="bg-pmg-bg pt-[72px]">
+    <main className="bg-pmg-bg pt-36 sm:pt-28 md:pt-[72px]">
       <section className="border-b border-pmg-border py-16 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionBadge icon={<DocIcon />}>Services</SectionBadge>
@@ -81,11 +81,11 @@ export default function ServicesPage() {
       </motion.section>
 
       <section className="border-t border-pmg-border bg-pmg-bg py-16">
-        <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-6 px-4 sm:flex-row sm:items-center sm:px-6 lg:px-8">
-          <p className="text-lg font-medium text-pmg-text">
+        <div className="mx-auto flex max-w-7xl flex-col items-stretch justify-between gap-6 px-4 sm:flex-row sm:items-center sm:px-6 lg:px-8">
+          <p className="text-center text-lg font-medium text-pmg-text sm:text-left">
             Need permits, escorts, or a warehouse stop along the route?
           </p>
-          <PillButton href="/contact" variant="primary">
+          <PillButton href="/contact" variant="primary" className="w-full justify-center sm:w-auto">
             Request a Quote
           </PillButton>
         </div>

@@ -327,7 +327,7 @@ export function Contact() {
                   placeholder="Cargo details, dimensions, pickup and delivery locations"
                 />
               </div>
-              <PillButton type="submit" variant="primary" className="mt-2">
+              <PillButton type="submit" variant="primary" className="mt-2 w-full justify-center sm:w-auto">
                 Send Enquiry →
               </PillButton>
             </form>

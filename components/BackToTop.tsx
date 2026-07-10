@@ -34,10 +34,8 @@ export default function BackToTop() {
       type="button"
       onClick={handleClick}
       aria-label="Back to top"
-      className="fixed z-50 transition-opacity duration-300 ease-in-out"
+      className="fixed z-50 transition-opacity duration-300 ease-in-out max-sm:bottom-[calc(5.5rem+env(safe-area-inset-bottom))] max-sm:right-4 sm:bottom-[90px] sm:right-5"
       style={{
-        bottom: "90px",
-        right: "20px",
         opacity: visible ? 1 : 0,
         pointerEvents: visible ? "auto" : "none",
       }}

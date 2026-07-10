@@ -34,7 +34,7 @@ function TeamIcon() {
 
 export default function AboutPage() {
   return (
-    <main className="bg-pmg-bg pt-[72px]">
+    <main className="bg-pmg-bg pt-36 sm:pt-28 md:pt-[72px]">
       <section className="border-b border-pmg-border py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionBadge icon={<TeamIcon />}>About PMG</SectionBadge>
@@ -60,14 +60,14 @@ export default function AboutPage() {
               is critical, we are the team steel customers call.
             </p>
           </div>
-          <div className="mt-10 flex flex-wrap gap-4">
-            <div className="rounded-xl border border-pmg-border bg-white px-8 py-6 shadow-[0_4px_24px_rgba(0,0,0,0.06)]">
+          <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
+            <div className="w-full rounded-xl border border-pmg-border bg-white px-8 py-6 text-center shadow-[0_4px_24px_rgba(0,0,0,0.06)] sm:w-auto sm:text-left">
               <p className="font-heading text-5xl font-black text-pmg-red">14+</p>
               <p className="mt-1 text-sm font-bold uppercase tracking-wider text-pmg-text">
                 Years in Steel Logistics
               </p>
             </div>
-            <div className="rounded-xl border border-pmg-border bg-white px-8 py-6 shadow-[0_4px_24px_rgba(0,0,0,0.06)]">
+            <div className="w-full rounded-xl border border-pmg-border bg-white px-8 py-6 text-center shadow-[0_4px_24px_rgba(0,0,0,0.06)] sm:w-auto sm:text-left">
               <p className="font-heading text-5xl font-black text-pmg-red">3</p>
               <p className="mt-1 text-sm font-bold uppercase tracking-wider text-pmg-text">
                 Districts Served
@@ -102,11 +102,11 @@ export default function AboutPage() {
       </motion.section>
 
       <section className="border-t border-pmg-border bg-pmg-bg py-16">
-        <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-6 px-4 sm:flex-row sm:items-center sm:px-6 lg:px-8">
-          <p className="text-lg font-medium text-pmg-text">
+        <div className="mx-auto flex max-w-7xl flex-col items-stretch justify-between gap-6 px-4 sm:flex-row sm:items-center sm:px-6 lg:px-8">
+          <p className="text-center text-lg font-medium text-pmg-text sm:text-left">
             See how we plan and execute complex moves.
           </p>
-          <PillButton href="/#process" variant="outline">
+          <PillButton href="/#process" variant="outline" className="w-full justify-center sm:w-auto">
             View Our Process
           </PillButton>
         </div>

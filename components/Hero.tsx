@@ -49,7 +49,7 @@ function HeroImageStrip() {
         }
       `}</style>
       <div
-        className="hero-picsum-strip-root pointer-events-auto absolute left-0 top-1/2 z-[9] w-[200px]"
+        className="hero-picsum-strip-root pointer-events-auto absolute left-0 top-1/2 z-[9] hidden w-[200px] lg:block"
         style={{
           transform: "translateY(-50%) rotate(-6deg)",
         }}
@@ -101,7 +101,7 @@ function ShieldIcon() {
 }
 
 const headlineStyle: CSSProperties = {
-  fontSize: "clamp(48px, 7vw, 96px)",
+  fontSize: "clamp(36px, 9vw, 96px)",
   fontWeight: 900,
 };
 
@@ -109,7 +109,7 @@ export function Hero() {
   const { openBooking } = useTruckBooking();
 
   return (
-    <section className="relative flex min-h-dvh flex-col overflow-hidden bg-pmg-bg pt-28 sm:pt-[5.25rem] md:pt-[72px]">
+    <section className="relative flex min-h-dvh flex-col overflow-hidden bg-pmg-bg pt-36 sm:pt-28 md:pt-[72px]">
       <HeroImageStrip />
       <div className="pattern-dots pointer-events-none absolute inset-0 opacity-[0.5]" />
       <div
@@ -156,12 +156,12 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.45, duration: 0.55 }}
-            className="mt-10 flex flex-wrap gap-4"
+            className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4"
           >
             <button
               type="button"
               onClick={openBooking}
-              className="group inline-flex items-center gap-3 rounded-full bg-[#CC1A1A] py-2 pl-2 pr-7 text-sm font-semibold tracking-wide text-white shadow-lg shadow-black/15 transition-all duration-300 ease-in-out hover:scale-[1.02] hover:bg-[#1A5FCC] active:scale-[0.98] active:bg-[#1A5FCC] sm:pr-8 sm:text-base"
+              className="group inline-flex w-full items-center justify-center gap-3 rounded-full bg-[#CC1A1A] py-2 pl-2 pr-7 text-sm font-semibold tracking-wide text-white shadow-lg shadow-black/15 transition-all duration-300 ease-in-out hover:scale-[1.02] hover:bg-[#1A5FCC] active:scale-[0.98] active:bg-[#1A5FCC] sm:w-auto sm:justify-start sm:pr-8 sm:text-base"
             >
               <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white text-[#111111]">
                 <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5" aria-hidden>
@@ -175,7 +175,7 @@ export function Hero() {
               </span>
               <span>Book a Truck</span>
             </button>
-            <PillButton href="/services" variant="primary">
+            <PillButton href="/services" variant="primary" className="w-full justify-center sm:w-auto">
               View Services
             </PillButton>
           </motion.div>

@@ -118,7 +118,7 @@ export function FAQ() {
                   aria-expanded={isOpen}
                 >
                   <span
-                    className={`font-heading text-sm font-bold uppercase tracking-wide sm:text-base ${
+                    className={`min-w-0 flex-1 font-heading text-sm font-bold uppercase tracking-wide sm:text-base ${
                       isOpen ? "text-pmg-red" : "text-pmg-text"
                     }`}
                   >
