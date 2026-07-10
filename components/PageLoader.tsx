@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 
 const MIN_VISIBLE_MS = 400;
-const FADE_DURATION = 0.22;
+const FADE_DURATION = 0.4;
 const MAX_VISIBLE_MS = 2000;
 
 const loaderVariants = {
@@ -107,31 +107,42 @@ export function PageLoader() {
           animate="visible"
           exit="hidden"
           transition={{ duration: FADE_DURATION, ease: "easeInOut" }}
-          className="fixed inset-0 z-[200] flex items-center justify-center bg-[#111111]"
+          className="fixed inset-0 z-[200] flex items-center justify-center backdrop-blur-[12px] bg-black/15"
           role="status"
           aria-live="polite"
           aria-label="Loading page"
         >
           <motion.div
-            initial={{ opacity: 0, scale: 0.96 }}
-            animate={{
-              opacity: 1,
-              scale: [1, 1.04, 1],
-            }}
-            exit={{ opacity: 0, scale: 0.96 }}
-            transition={{
-              opacity: { duration: FADE_DURATION, ease: "easeOut" },
-              scale: { duration: 1.4, repeat: Infinity, ease: "easeInOut" },
-            }}
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            transition={{ duration: FADE_DURATION, ease: "easeInOut" }}
           >
-            <Image
-              src="/pmg-transports-logo.png"
-              alt="PMG Transport"
-              width={220}
-              height={118}
-              className="h-24 w-auto object-contain sm:h-28"
-              priority
-            />
+            <motion.div
+              animate={{
+                scale: [1, 1.05, 1],
+                boxShadow: [
+                  "0 0 0px rgba(204,26,26,0)",
+                  "0 0 24px rgba(204,26,26,0.4)",
+                  "0 0 0px rgba(204,26,26,0)",
+                ],
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+              className="rounded-2xl"
+            >
+              <Image
+                src="/pmg-transports-logo.png"
+                alt="PMG Transport"
+                width={220}
+                height={118}
+                className="h-24 w-auto object-contain sm:h-28"
+                priority
+              />
+            </motion.div>
           </motion.div>
         </motion.div>
       )}
