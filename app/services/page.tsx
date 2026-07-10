@@ -7,19 +7,19 @@ import { PillButton } from "@/components/PillButton";
 const detail = [
   {
     title: "Steel Product Transport",
-    body: "PMG Transport specializes in steel logistics — not general heavy equipment. We haul Steel Coils, Steel Sheets & Plates, TMT Bars & Rods, Steel Pipes & Tubes, Steel Wire & Rods, and Angles, Channels & Beams with proper load securing, weight distribution, and mill-to-fabricator routing across Chennai, Thiruvallur, and Kanchipuram.",
+    body: "Dedicated hauling of steel coils, sheets & plates, TMT bars & rods, steel pipes & tubes, wire rods, and angles/channels/beams. Every load is properly secured to prevent shifting or edge damage, with direct mill-to-fabricator and mill-to-site delivery across our service area.",
   },
   {
     title: "Logistics & Warehousing",
-    body: "Bonded warehousing and inventory management built for steel stock — coil yards, sheet and plate staging, TMT bar storage, and timed releases aligned to fabrication and project schedules. Ideal for distributors and fabricators who need buffer between mill receipts and site delivery.",
+    body: "Bonded warehousing and inventory management for steel stock — mill receipts, fabricator staging, and timed releases aligned to your production schedule. Ideal for buyers who need buffer stock held close to their site.",
   },
   {
     title: "Real-Time Tracking",
-    body: "GPS-enabled fleet tracking with live status updates and 24/7 dispatch support for every steel consignment. Your team sees pickup confirmations, in-transit milestones, ETAs, and proof of delivery as coils, bars, and structural sections move through the supply chain.",
+    body: "GPS-enabled fleet tracking with live status updates and 24/7 dispatch support. Know exactly where your steel consignment is from Manali pickup to final delivery sign-off.",
   },
   {
     title: "Project Cargo",
-    body: "Coordinated steel project deliveries — phased mill-to-fabricator movements, multi-drop scheduling for large coil and structural orders, and route planning for oversized steel loads. We align road movement with a single accountable operations lead from first pickup to final drop.",
+    body: "Coordinated multi-load steel project deliveries — route planning, multi-drop scheduling, and phased mill-to-fabricator movements for large construction or industrial orders. One operations lead, full accountability.",
   },
 ];
 
@@ -43,13 +43,13 @@ export default function ServicesPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionBadge icon={<DocIcon />}>Services</SectionBadge>
           <h1 className="font-heading mt-6 text-4xl font-extrabold uppercase tracking-tight text-pmg-text sm:text-5xl md:text-6xl">
-            Steel Transport & Logistics
+            Steel Transport Services
           </h1>
           <p className="mt-6 max-w-2xl text-lg text-pmg-muted">
-            PMG Transport specializes in steel logistics — moving Steel Coils,
-            Sheets & Plates, TMT Bars & Rods, Pipes & Tubes, Wire & Rods, and
-            Angles, Channels & Beams with disciplined planning, secured hauling,
-            and warehousing when you need inventory buffer and control.
+            From steel coil and TMT bar deliveries to full project cargo
+            movements — PMG Transport handles every steel product type with the
+            right truck, proper load securing, and on-time mill-to-fabricator
+            delivery.
           </p>
         </div>
       </section>
@@ -83,7 +83,8 @@ export default function ServicesPage() {
       <section className="border-t border-pmg-border bg-pmg-bg py-16">
         <div className="mx-auto flex max-w-7xl flex-col items-stretch justify-between gap-6 px-4 sm:flex-row sm:items-center sm:px-6 lg:px-8">
           <p className="text-center text-lg font-medium text-pmg-text sm:text-left">
-            Need permits, escorts, or a warehouse stop along the route?
+            Need to move steel coils, TMT bars, or structural sections across
+            Chennai, Thiruvallur, or Kanchipuram?
           </p>
           <PillButton href="/contact" variant="primary" className="w-full justify-center sm:w-auto">
             Request a Quote
