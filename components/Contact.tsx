@@ -6,12 +6,20 @@ import { motion } from "framer-motion";
 import { SectionBadge } from "@/components/SectionBadge";
 import { PillButton } from "@/components/PillButton";
 
-const serviceOptions = [
+const defaultServiceOptions = [
   "Heavy Equipment Transport",
   "Logistics & Warehousing",
   "Real-Time Tracking",
   "Project Cargo",
 ];
+
+type ContactProps = {
+  title?: string;
+  description?: string;
+  serviceOptions?: string[];
+  workingHoursExtra?: string;
+  urgentNote?: string;
+};
 
 const WHATSAPP_NUMBER = "919498073311";
 
@@ -133,7 +141,13 @@ function useWorkingHoursStatus(): boolean | null {
 }
 
 
-export function Contact() {
+export function Contact({
+  title = "Plan Your Next Move",
+  description,
+  serviceOptions = defaultServiceOptions,
+  workingHoursExtra,
+  urgentNote,
+}: ContactProps = {}) {
   const isOpen = useWorkingHoursStatus();
 
   return (
@@ -149,8 +163,13 @@ export function Contact() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionBadge icon={<ChatIcon />}>Get in Touch</SectionBadge>
           <h2 className="font-heading mt-6 text-4xl font-extrabold uppercase tracking-tight text-pmg-text sm:text-5xl">
-            Plan Your Next Move
+            {title}
           </h2>
+          {description && (
+            <p className="mt-4 max-w-2xl text-lg leading-relaxed text-pmg-muted">
+              {description}
+            </p>
+          )}
 
           <div className="mt-14 grid gap-12 lg:grid-cols-2 lg:gap-16">
             <div className="space-y-5">
@@ -212,29 +231,34 @@ export function Contact() {
                 }
                 title="Working Hours"
               >
-                <div className="mt-1 flex items-center gap-2">
-                  <span
-                    className={`h-2.5 w-2.5 shrink-0 rounded-full ${
-                      isOpen === null
-                        ? "bg-pmg-border"
-                        : isOpen
-                          ? "bg-green-500"
-                          : "bg-red-500"
-                    }`}
-                    aria-hidden
-                  />
-                  <p className="text-sm text-pmg-muted">
-                    Mon - Sat: 9:00 AM - 6:00 PM
-                    {isOpen !== null && (
-                      <span
-                        className={`ml-2 text-xs font-semibold ${
-                          isOpen ? "text-green-600" : "text-red-500"
-                        }`}
-                      >
-                        {isOpen ? "Open now" : "Closed"}
-                      </span>
-                    )}
-                  </p>
+                <div className="mt-1 space-y-1">
+                  <div className="flex items-center gap-2">
+                    <span
+                      className={`h-2.5 w-2.5 shrink-0 rounded-full ${
+                        isOpen === null
+                          ? "bg-pmg-border"
+                          : isOpen
+                            ? "bg-green-500"
+                            : "bg-red-500"
+                      }`}
+                      aria-hidden
+                    />
+                    <p className="text-sm text-pmg-muted">
+                      Mon - Sat: 9:00 AM - 6:00 PM
+                      {isOpen !== null && (
+                        <span
+                          className={`ml-2 text-xs font-semibold ${
+                            isOpen ? "text-green-600" : "text-red-500"
+                          }`}
+                        >
+                          {isOpen ? "Open now" : "Closed"}
+                        </span>
+                      )}
+                    </p>
+                  </div>
+                  {workingHoursExtra && (
+                    <p className="text-sm text-pmg-muted">{workingHoursExtra}</p>
+                  )}
                 </div>
               </ContactCard>
 
@@ -330,6 +354,9 @@ export function Contact() {
               <PillButton type="submit" variant="primary" className="mt-2 w-full justify-center sm:w-auto">
                 Send Enquiry →
               </PillButton>
+              {urgentNote && (
+                <p className="text-sm leading-relaxed text-pmg-muted">{urgentNote}</p>
+              )}
             </form>
           </div>
         </div>
