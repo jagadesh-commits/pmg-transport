@@ -1,6 +1,7 @@
 "use client";
 
 import { useTruckBooking } from "@/components/TruckBookingProvider";
+import BackToTopButton from "@/components/BackToTop";
 
 const WHATSAPP_NUMBER = "919498073311";
 
@@ -30,27 +31,16 @@ export function FloatingActions() {
 
   return (
     <div
-      className="pointer-events-none fixed bottom-4 right-4 z-50 flex flex-col-reverse items-end gap-[4.75rem] pb-[env(safe-area-inset-bottom)] sm:bottom-6 sm:right-6 sm:gap-20"
+      className="pointer-events-none fixed bottom-5 right-5 z-50 flex flex-col items-end gap-3.5 pb-[env(safe-area-inset-bottom)] sm:bottom-6 sm:right-6"
       aria-label="Quick actions"
     >
-      <a
-        href={`https://wa.me/${WHATSAPP_NUMBER}`}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Chat with us on WhatsApp"
-        className="pointer-events-auto group flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_6px_20px_rgba(0,0,0,0.25)] transition hover:scale-105 hover:brightness-95"
-      >
-        <WhatsAppGlyph className="h-7 w-7" />
-        <span className="pointer-events-none absolute right-full mr-3 hidden whitespace-nowrap rounded-md bg-[#111111] px-3 py-1.5 text-xs font-semibold text-white opacity-0 shadow-lg transition group-hover:opacity-100 sm:block">
-          Chat with us on WhatsApp
-        </span>
-      </a>
+      <BackToTopButton />
 
       <button
         type="button"
         onClick={openBooking}
         aria-label="Book a Truck"
-        className="pointer-events-auto group flex h-14 w-14 items-center justify-center rounded-full bg-[#CC1A1A] text-white shadow-[0_6px_20px_rgba(0,0,0,0.25)] transition hover:scale-105 hover:bg-[#1A5FCC] sm:w-auto sm:gap-2.5 sm:px-5"
+        className="pointer-events-auto group relative flex h-14 w-14 items-center justify-center rounded-full bg-[#CC1A1A] text-white shadow-[0_6px_20px_rgba(0,0,0,0.25)] transition hover:scale-105 hover:bg-[#1A5FCC] sm:w-auto sm:gap-2.5 sm:px-5"
       >
         <TruckIcon className="h-7 w-7 shrink-0" />
         <span className="hidden text-sm font-semibold sm:inline">Book a Truck</span>
@@ -58,6 +48,19 @@ export function FloatingActions() {
           Book a Truck
         </span>
       </button>
+
+      <a
+        href={`https://wa.me/${WHATSAPP_NUMBER}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Chat with us on WhatsApp"
+        className="pointer-events-auto group relative flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_6px_20px_rgba(0,0,0,0.25)] transition hover:scale-105 hover:brightness-95"
+      >
+        <WhatsAppGlyph className="h-7 w-7" />
+        <span className="pointer-events-none absolute right-full mr-3 hidden whitespace-nowrap rounded-md bg-[#111111] px-3 py-1.5 text-xs font-semibold text-white opacity-0 shadow-lg transition group-hover:opacity-100 sm:block">
+          Chat with us on WhatsApp
+        </span>
+      </a>
     </div>
   );
 }

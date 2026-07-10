@@ -5,7 +5,6 @@ import { AppShell } from "@/components/AppShell";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { PageLoader } from "@/components/PageLoader";
-import BackToTop from "@/components/BackToTop";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -44,7 +43,6 @@ export default function RootLayout({
           <div className="flex flex-1 flex-col">{children}</div>
           <Footer />
         </AppShell>
-        <BackToTop />
       </body>
     </html>
   );
