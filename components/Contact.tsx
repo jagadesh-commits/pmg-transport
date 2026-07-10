@@ -7,7 +7,7 @@ import { SectionBadge } from "@/components/SectionBadge";
 import { PillButton } from "@/components/PillButton";
 
 const defaultServiceOptions = [
-  "Heavy Equipment Transport",
+  "Steel Product Transport",
   "Logistics & Warehousing",
   "Real-Time Tracking",
   "Project Cargo",

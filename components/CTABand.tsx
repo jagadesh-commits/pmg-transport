@@ -31,7 +31,7 @@ export function CTABand() {
             Ready to Move Your Cargo?
           </h2>
           <p className="mt-4 max-w-xl text-base leading-relaxed text-white/85 sm:text-lg">
-            Get the best rates on heavy transport. Talk to our team today.
+            Get the best rates on steel transport. Talk to our team today.
           </p>
         </div>
         <PillButton href="/contact" variant="onDark" className="w-full justify-center sm:w-auto">

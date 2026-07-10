@@ -15,7 +15,7 @@ const pillars = [
   },
   {
     title: "Local Coverage",
-    text: "Chennai, Thiruvallur, and Kanchipuram — local steel transport with fleet and drivers who know the steel market corridors.",
+    text: "Chennai, Thiruvallur, and Kanchipuram — local steel transport and logistics with vetted partners.",
   },
 ];
 
@@ -39,11 +39,22 @@ export default function AboutPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionBadge icon={<TeamIcon />}>About PMG</SectionBadge>
           <h1 className="font-heading mt-6 text-4xl font-extrabold uppercase tracking-tight text-pmg-text sm:text-5xl md:text-6xl">
-            Built for Steel
+            Built to Move Steel
           </h1>
           <div className="mt-10 max-w-3xl space-y-6 text-lg leading-relaxed text-pmg-muted">
             <p>
-              PMG Transport is Chennai&apos;s dedicated steel logistics company — moving steel coils, TMT bars, sheets &amp; plates, pipes &amp; tubes, and structural sections from Manali Steel Yard to fabricators, construction sites, and warehouses across Chennai, Thiruvallur, and Kanchipuram. With over 14 years in the steel corridor, our fleet and crew understand the weight, securing, and handling that steel cargo demands — no generic freight, just steel done right.
+              PMG Transport is a local steel transport and logistics company with
+              integrated warehousing capability. For over fourteen years we have
+              moved steel coils, TMT bars, sheets &amp; plates, and time-critical
+              project cargo across Chennai, Thiruvallur, and Kanchipuram—pairing
+              disciplined road movement with the planning rigor your schedules
+              depend on.
+            </p>
+            <p>
+              Our operations desk runs 24/7, our fleet and partner network are
+              licensed and insured, and our crews train specifically for steel
+              handling and high-value loads. When the schedule is tight and the
+              cargo is critical, we are the team steel customers call.
             </p>
           </div>
           <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:flex-wrap">

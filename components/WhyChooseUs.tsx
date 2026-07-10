@@ -18,7 +18,7 @@ const features = [
   },
   {
     title: "Local Service Area",
-    text: "Chennai, Thiruvallur, and Kanchipuram — local heavy equipment transport and logistics",
+    text: "Chennai, Thiruvallur, and Kanchipuram — local steel transport and logistics from Manali Steel Yard",
   },
   {
     title: "Expert Crew",

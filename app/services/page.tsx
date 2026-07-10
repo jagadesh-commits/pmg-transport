@@ -7,7 +7,7 @@ import { PillButton } from "@/components/PillButton";
 const detail = [
   {
     title: "Steel Product Transport",
-    body: "Dedicated hauling of steel coils, sheets & plates, TMT bars & rods, steel pipes & tubes, wire rods, and angles/channels/beams. Every load is properly secured to prevent shifting or edge damage, with direct mill-to-fabricator and mill-to-site delivery across our service area.",
+    body: "Dedicated hauling of steel coils, TMT bars & rods, sheets & plates, pipes & tubes, and structural sections. Proper load securing, lashing, and documentation so your steel moves from mill to fabricator without surprises.",
   },
   {
     title: "Logistics & Warehousing",
@@ -19,7 +19,7 @@ const detail = [
   },
   {
     title: "Project Cargo",
-    body: "Coordinated multi-load steel project deliveries — route planning, multi-drop scheduling, and phased mill-to-fabricator movements for large construction or industrial orders. One operations lead, full accountability.",
+    body: "Coordinated multi-load steel project deliveries — route planning, multi-drop scheduling, and phased mill-to-fabricator movements for large construction or industrial orders. Full project planning, route surveys, and coordination for large steel orders and occasional oversized or heavy equipment movements. One operations lead, full accountability.",
   },
 ];
 
@@ -43,13 +43,12 @@ export default function ServicesPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionBadge icon={<DocIcon />}>Services</SectionBadge>
           <h1 className="font-heading mt-6 text-4xl font-extrabold uppercase tracking-tight text-pmg-text sm:text-5xl md:text-6xl">
-            Steel Transport Services
+            Steel Transport & Logistics
           </h1>
           <p className="mt-6 max-w-2xl text-lg text-pmg-muted">
-            From steel coil and TMT bar deliveries to full project cargo
-            movements — PMG Transport handles every steel product type with the
-            right truck, proper load securing, and on-time mill-to-fabricator
-            delivery.
+            From single coil loads to multi-phase steel project cargo, PMG
+            Transport delivers disciplined planning, secured movement, and
+            warehousing when you need buffer and control.
           </p>
         </div>
       </section>

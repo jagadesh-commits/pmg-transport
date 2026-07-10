@@ -42,15 +42,14 @@ export function AboutStrip() {
               14+
             </p>
             <p className="font-heading mt-2 text-xl font-bold uppercase tracking-wide text-pmg-text">
-              Years of Moving Heavy
+              Years of Moving Steel
             </p>
             <p className="mt-6 text-lg leading-relaxed text-pmg-muted">
-              PMG Transport is built for loads that do not fit standard lanes.
-              From route surveys and permits to escorts and warehouse handoff,
-              we coordinate every mile with dispatch discipline and crews who
-              understand oversized cargo. We serve Chennai, Thiruvallur, and
-              Kanchipuram with local assets and partners positioned to keep
-              critical equipment moving on schedule.
+              PMG Transport is built for steel. From mill pickup at Manali Steel Yard
+              to fabricator handoff, we coordinate every mile with dispatch discipline
+              and crews who understand coil, TMT, and plate handling. We serve Chennai,
+              Thiruvallur, and Kanchipuram with local assets positioned to keep steel
+              moving on schedule.
             </p>
             <Link
               href="/about"
