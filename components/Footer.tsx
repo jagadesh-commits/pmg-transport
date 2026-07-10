@@ -60,10 +60,7 @@ export function Footer() {
             width={160}
             className="mx-auto h-20 w-auto object-contain sm:mx-0"
           />
-          <p className="mt-4 font-heading text-lg font-bold tracking-wide text-white">
-            PMG TRANSPORTS
-          </p>
-          <p className="mt-2 text-sm font-semibold text-white/90">
+          <p className="mt-4 text-sm font-semibold text-white/90">
             Trusted Since 2010
           </p>
           <p className="mt-4 text-sm leading-relaxed text-white/80">
