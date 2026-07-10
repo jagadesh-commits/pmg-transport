@@ -7,15 +7,15 @@ import { PillButton } from "@/components/PillButton";
 const pillars = [
   {
     title: "Safety First",
-    text: "Every move is planned around route risk, load integrity, and crew protocols—because heavy cargo demands zero guesswork.",
+    text: "Every steel load is secured to prevent shifting, coil roll, or edge damage in transit — because steel cargo demands handling precision, not guesswork.",
   },
   {
     title: "Transparent Ops",
-    text: "Dispatch updates, documentation, and milestone tracking keep your project teams aligned from pickup to proof of delivery.",
+    text: "Live dispatch updates, LR documentation, and milestone tracking keep your procurement and site teams aligned from Manali pickup to delivery sign-off.",
   },
   {
     title: "Local Coverage",
-    text: "Chennai, Thiruvallur, and Kanchipuram — local heavy equipment transport and logistics with vetted partners.",
+    text: "Chennai, Thiruvallur, and Kanchipuram — local steel transport with fleet and drivers who know the steel market corridors.",
   },
 ];
 
@@ -39,25 +39,11 @@ export default function AboutPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionBadge icon={<TeamIcon />}>About PMG</SectionBadge>
           <h1 className="font-heading mt-6 text-4xl font-extrabold uppercase tracking-tight text-pmg-text sm:text-5xl md:text-6xl">
-            Built to Haul Heavy
+            Built for Steel
           </h1>
           <div className="mt-10 max-w-3xl space-y-6 text-lg leading-relaxed text-pmg-muted">
             <p>
-              PMG Transport is a local steel logistics company rooted in the
-              regional steel trading industry — founded by the same managing
-              director who built a career moving and distributing steel across
-              Tamil Nadu. For over fourteen years we have hauled steel coils,
-              TMT bars, sheets & plates, pipes, and structural sections across
-              Chennai, Thiruvallur, and Kanchipuram — pairing secured road
-              movement with integrated warehousing when your supply chain needs
-              it.
-            </p>
-            <p>
-              Our operations desk runs 24/7, our fleet and partner network are
-              licensed and insured, and our crews train specifically for
-              steel loads — coil handling, weight compliance, and sensitive
-              fabricator deliveries. When the schedule is tight and the cargo
-              is critical, we are the team steel customers call.
+              PMG Transport is Chennai&apos;s dedicated steel logistics company — moving steel coils, TMT bars, sheets &amp; plates, pipes &amp; tubes, and structural sections from Manali Steel Yard to fabricators, construction sites, and warehouses across Chennai, Thiruvallur, and Kanchipuram. With over 14 years in the steel corridor, our fleet and crew understand the weight, securing, and handling that steel cargo demands — no generic freight, just steel done right.
             </p>
           </div>
           <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
@@ -71,6 +57,18 @@ export default function AboutPage() {
               <p className="font-heading text-5xl font-black text-pmg-red">3</p>
               <p className="mt-1 text-sm font-bold uppercase tracking-wider text-pmg-text">
                 Districts Served
+              </p>
+            </div>
+            <div className="w-full rounded-xl border border-pmg-border bg-white px-8 py-6 text-center shadow-[0_4px_24px_rgba(0,0,0,0.06)] sm:w-auto sm:text-left">
+              <p className="font-heading text-5xl font-black text-pmg-red">500+</p>
+              <p className="mt-1 text-sm font-bold uppercase tracking-wider text-pmg-text">
+                Steel Routes Covered
+              </p>
+            </div>
+            <div className="w-full rounded-xl border border-pmg-border bg-white px-8 py-6 text-center shadow-[0_4px_24px_rgba(0,0,0,0.06)] sm:w-auto sm:text-left">
+              <p className="font-heading text-5xl font-black text-pmg-red">99%</p>
+              <p className="mt-1 text-sm font-bold uppercase tracking-wider text-pmg-text">
+                On-Time Delivery Rate
               </p>
             </div>
           </div>
@@ -104,7 +102,7 @@ export default function AboutPage() {
       <section className="border-t border-pmg-border bg-pmg-bg py-16">
         <div className="mx-auto flex max-w-7xl flex-col items-stretch justify-between gap-6 px-4 sm:flex-row sm:items-center sm:px-6 lg:px-8">
           <p className="text-center text-lg font-medium text-pmg-text sm:text-left">
-            See how we plan and execute complex moves.
+            See how we plan and execute every steel delivery.
           </p>
           <PillButton href="/#process" variant="outline" className="w-full justify-center sm:w-auto">
             View Our Process
