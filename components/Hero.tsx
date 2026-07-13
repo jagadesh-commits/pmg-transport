@@ -1,6 +1,7 @@
 "use client";
 
 import type { CSSProperties } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { SectionBadge } from "@/components/SectionBadge";
@@ -31,88 +32,117 @@ const HERO_STRIP_IMAGES = [
   },
 ] as const;
 
+const SCROLL_CYCLE_MS = 15_000;
+const STRIP_GAP_PX = 12;
+
 function HeroImageStrip() {
-  const cards = [...HERO_STRIP_IMAGES, ...HERO_STRIP_IMAGES];
+  const rootRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const firstItemRef = useRef<HTMLDivElement>(null);
+  const scrollOffsetRef = useRef(0);
+  const isPausedRef = useRef(false);
+  const [queue, setQueue] = useState(() => [...HERO_STRIP_IMAGES]);
+  const [scrollOffset, setScrollOffset] = useState(0);
+
+  useEffect(() => {
+    const root = rootRef.current;
+    const track = trackRef.current;
+    if (!root || !track) return;
+
+    const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    if (motionQuery.matches) return;
+
+    const onEnter = () => {
+      isPausedRef.current = true;
+    };
+    const onLeave = () => {
+      isPausedRef.current = false;
+    };
+
+    root.addEventListener("mouseenter", onEnter);
+    root.addEventListener("mouseleave", onLeave);
+
+    let raf = 0;
+    let lastTime = performance.now();
+
+    const measureStep = () => {
+      const first = firstItemRef.current;
+      if (!first) return 0;
+      return first.offsetHeight + STRIP_GAP_PX;
+    };
+
+    const tick = (now: number) => {
+      const step = measureStep();
+      if (step > 0 && !isPausedRef.current) {
+        const dt = now - lastTime;
+        lastTime = now;
+
+        let nextOffset =
+          scrollOffsetRef.current +
+          (step * HERO_STRIP_IMAGES.length * dt) / SCROLL_CYCLE_MS;
+
+        while (nextOffset >= step) {
+          nextOffset -= step;
+          scrollOffsetRef.current = nextOffset;
+          setQueue((current) => {
+            const [head, ...rest] = current;
+            return [...rest, head];
+          });
+        }
+
+        scrollOffsetRef.current = nextOffset;
+        setScrollOffset(nextOffset);
+      } else {
+        lastTime = now;
+      }
+
+      raf = requestAnimationFrame(tick);
+    };
+
+    raf = requestAnimationFrame(tick);
+
+    return () => {
+      cancelAnimationFrame(raf);
+      root.removeEventListener("mouseenter", onEnter);
+      root.removeEventListener("mouseleave", onLeave);
+    };
+  }, []);
 
   return (
-    <>
-      <style>{`
-        @keyframes scrollUp {
-          0% { transform: translateY(0); }
-          100% { transform: translateY(-50%); }
-        }
-        .hero-picsum-strip-track {
-          animation: scrollUp 15s linear infinite;
-        }
-        .hero-picsum-strip-root:hover .hero-picsum-strip-track {
-          animation-play-state: paused;
-        }
-      `}</style>
-
-      {/* Mobile: full-bleed scrolling fleet background */}
-      <div
-        className="hero-picsum-strip-root pointer-events-none absolute inset-0 z-[1] overflow-hidden lg:hidden"
-        aria-hidden
-      >
-        <div className="h-full w-full overflow-hidden">
-          <div className="hero-picsum-strip-track flex w-full flex-col">
-            {cards.map((image, i) => (
-              <div
-                key={`mobile-${image.src}-${i}`}
-                className="relative h-[min(100dvh,720px)] min-h-[min(100dvh,720px)] w-full shrink-0"
-              >
-                <Image
-                  src={image.src}
-                  alt={image.alt}
-                  fill
-                  className="object-cover"
-                  draggable={false}
-                  priority={i === 0}
-                  sizes="100vw"
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Desktop: left-side scrolling strip (unchanged) */}
-      <div
-        className="hero-picsum-strip-root pointer-events-auto absolute left-0 top-1/2 z-[9] hidden w-[200px] lg:block"
-        style={{
-          transform: "translateY(-50%) rotate(-6deg)",
-        }}
-        aria-hidden
-      >
+    <div
+      ref={rootRef}
+      className="hero-picsum-strip-root pointer-events-none absolute inset-0 z-[1] overflow-hidden lg:pointer-events-auto lg:inset-auto lg:left-0 lg:top-1/2 lg:z-[9] lg:w-[200px] lg:-translate-y-1/2 lg:-rotate-6"
+      aria-hidden
+    >
+      <div className="h-full w-full overflow-hidden lg:h-[min(560px,70vh)] lg:[mask-image:linear-gradient(to_bottom,transparent_0%,black_15%,black_85%,transparent_100%)] lg:[-webkit-mask-image:linear-gradient(to_bottom,transparent_0%,black_15%,black_85%,transparent_100%)]">
         <div
-          className="h-[min(560px,70vh)] w-full overflow-hidden"
-          style={{
-            maskImage:
-              "linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%)",
-            WebkitMaskImage:
-              "linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%)",
-          }}
+          ref={trackRef}
+          className="flex w-full flex-col gap-3 will-change-transform"
+          style={{ transform: `translateY(-${scrollOffset}px)` }}
         >
-          <div className="hero-picsum-strip-track flex w-full flex-col gap-3">
-            {cards.map((image, i) => (
-              <div
-                key={`${image.src}-${i}`}
-                className="shrink-0 overflow-hidden rounded-xl shadow"
-              >
-                <Image
-                  src={image.src}
-                  alt={image.alt}
-                  width={200}
-                  height={140}
-                  className="h-[140px] w-[200px] object-cover"
-                  draggable={false}
-                />
-              </div>
-            ))}
-          </div>
+          {queue.map((image, index) => (
+            <div
+              key={image.src}
+              ref={index === 0 ? firstItemRef : undefined}
+              className="relative mx-auto w-full shrink-0 overflow-hidden max-lg:h-[min(100dvh,720px)] max-lg:max-w-none lg:mx-0 lg:h-[140px] lg:w-[200px] lg:rounded-xl lg:shadow"
+            >
+              <Image
+                src={image.src}
+                alt={image.alt}
+                fill
+                className="object-cover"
+                draggable={false}
+                sizes="100vw"
+                priority={image.src === HERO_STRIP_IMAGES[0].src}
+                loading={
+                  image.src === HERO_STRIP_IMAGES[0].src ? undefined : "lazy"
+                }
+              />
+            </div>
+          ))}
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
