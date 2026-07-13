@@ -8,20 +8,25 @@ import { Process } from "@/components/Process";
 import { CTABand } from "@/components/CTABand";
 import { FAQ } from "@/components/FAQ";
 import { Contact } from "@/components/Contact";
+import { JsonLd } from "@/components/JsonLd";
+import { faqPageSchema } from "@/lib/schema";
 
 export default function Home() {
   return (
-    <main>
-      <Hero />
-      <Stats />
-      <Services />
-      <WhyChooseUs />
-      <Testimonials />
-      <AboutStrip />
-      <Process />
-      <CTABand />
-      <FAQ />
-      <Contact />
-    </main>
+    <>
+      <JsonLd data={faqPageSchema} />
+      <main>
+        <Hero />
+        <Stats />
+        <Services />
+        <WhyChooseUs />
+        <Testimonials />
+        <AboutStrip />
+        <Process />
+        <CTABand />
+        <FAQ />
+        <Contact />
+      </main>
+    </>
   );
 }
