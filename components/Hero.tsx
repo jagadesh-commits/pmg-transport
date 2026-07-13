@@ -141,7 +141,11 @@ export function Hero() {
     <section className="relative flex min-h-dvh flex-col overflow-hidden bg-pmg-bg pt-36 sm:pt-28 md:pt-[72px]">
       <HeroImageStrip />
       <div
-        className="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-b from-pmg-bg/70 via-pmg-bg/35 to-pmg-bg/55 lg:hidden"
+        className="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-br from-black/70 via-black/45 to-black/30 max-md:block md:hidden"
+        aria-hidden
+      />
+      <div
+        className="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-b from-pmg-bg/70 via-pmg-bg/35 to-pmg-bg/55 max-md:hidden md:max-lg:block lg:hidden"
         aria-hidden
       />
       <div className="pattern-dots pointer-events-none absolute inset-0 z-[3] opacity-[0.5]" />
@@ -178,7 +182,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.35, duration: 0.55 }}
-            className="mt-8 max-w-lg text-base leading-relaxed text-pmg-muted sm:text-lg"
+            className="mt-8 max-w-lg text-base leading-relaxed text-pmg-muted max-md:text-white/90 sm:text-lg"
           >
             Local steel transport and logistics across Chennai, Thiruvallur,
             and Kanchipuram — steel coils, TMT bars, sheets & plates, and

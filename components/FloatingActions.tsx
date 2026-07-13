@@ -31,16 +31,16 @@ export function FloatingActions() {
 
   return (
     <div
-      className="pointer-events-none fixed bottom-5 right-5 z-50 flex h-fit w-fit max-w-none flex-col items-end gap-3.5 pb-[env(safe-area-inset-bottom)] sm:bottom-6 sm:right-6"
+      className="pointer-events-none fixed bottom-5 right-5 z-40 flex h-fit w-fit max-w-none flex-col items-end gap-3.5 pb-[env(safe-area-inset-bottom)] sm:bottom-6 sm:right-6 md:z-50"
       aria-label="Quick actions"
     >
-      <BackToTopButton className="max-md:fixed max-md:bottom-20 max-md:right-5 max-md:z-50 md:relative md:bottom-auto md:right-auto" />
+      <BackToTopButton className="max-md:fixed max-md:bottom-[90px] max-md:right-5 max-md:z-40 md:relative md:bottom-auto md:right-auto" />
 
       <button
         type="button"
         onClick={openBooking}
         aria-label="Book a Truck"
-        className="pointer-events-auto group relative flex h-14 w-14 items-center justify-center rounded-full bg-[#CC1A1A] text-white shadow-[0_6px_20px_rgba(0,0,0,0.25)] transition hover:scale-105 hover:bg-[#1A5FCC] sm:w-auto sm:gap-2.5 sm:px-5"
+        className="pointer-events-auto group relative hidden h-14 w-14 items-center justify-center rounded-full bg-[#CC1A1A] text-white shadow-[0_6px_20px_rgba(0,0,0,0.25)] transition hover:scale-105 hover:bg-[#1A5FCC] md:flex sm:w-auto sm:gap-2.5 sm:px-5"
       >
         <TruckIcon className="h-7 w-7 shrink-0" />
         <span className="hidden text-sm font-semibold sm:inline">Book a Truck</span>
