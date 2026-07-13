@@ -48,6 +48,35 @@ function HeroImageStrip() {
           animation-play-state: paused;
         }
       `}</style>
+
+      {/* Mobile: full-bleed scrolling fleet background */}
+      <div
+        className="hero-picsum-strip-root pointer-events-none absolute inset-0 z-[1] overflow-hidden lg:hidden"
+        aria-hidden
+      >
+        <div className="h-full w-full overflow-hidden">
+          <div className="hero-picsum-strip-track flex w-full flex-col">
+            {cards.map((image, i) => (
+              <div
+                key={`mobile-${image.src}-${i}`}
+                className="relative h-[min(100dvh,720px)] min-h-[min(100dvh,720px)] w-full shrink-0"
+              >
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  fill
+                  className="object-cover"
+                  draggable={false}
+                  priority={i === 0}
+                  sizes="100vw"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Desktop: left-side scrolling strip (unchanged) */}
       <div
         className="hero-picsum-strip-root pointer-events-auto absolute left-0 top-1/2 z-[9] hidden w-[200px] lg:block"
         style={{
@@ -111,7 +140,11 @@ export function Hero() {
   return (
     <section className="relative flex min-h-dvh flex-col overflow-hidden bg-pmg-bg pt-36 sm:pt-28 md:pt-[72px]">
       <HeroImageStrip />
-      <div className="pattern-dots pointer-events-none absolute inset-0 opacity-[0.5]" />
+      <div
+        className="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-b from-pmg-bg/70 via-pmg-bg/35 to-pmg-bg/55 lg:hidden"
+        aria-hidden
+      />
+      <div className="pattern-dots pointer-events-none absolute inset-0 z-[3] opacity-[0.5]" />
       <div
         className="pointer-events-none absolute -right-32 top-1/4 h-[90%] w-[55%] rotate-[10deg] rounded-3xl bg-pmg-red/10 blur-3xl"
         aria-hidden
