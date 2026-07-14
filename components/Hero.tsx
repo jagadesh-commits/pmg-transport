@@ -200,11 +200,15 @@ export function Hero() {
           </motion.div>
 
           <h1
-            className="font-heading mt-8 uppercase leading-[1.05] tracking-tight text-pmg-text"
+            className="font-heading mt-8 uppercase leading-[1.05] tracking-tight text-white md:text-pmg-text"
             style={headlineStyle}
           >
-            <span className="block text-pmg-text">LOCAL STEEL</span>
-            <span className="block text-pmg-text">TRANSPORT &</span>
+            <span className="block text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)] md:text-pmg-text md:drop-shadow-none">
+              LOCAL STEEL
+            </span>
+            <span className="block text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)] md:text-pmg-text md:drop-shadow-none">
+              TRANSPORT &
+            </span>
             <span className="block text-pmg-red">LOGISTICS</span>
           </h1>
 
