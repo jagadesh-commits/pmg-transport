@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "PMG Transport | Steel Transport & Logistics in Chennai",
+  title: "About Us | PMG Transport Chennai",
   description:
-    "Chennai's dedicated steel logistics company — steel coils, TMT bars, sheets & plates, pipes & tubes moved from Manali Steel Yard across Chennai, Thiruvallur, and Kanchipuram. Trusted since 2010.",
+    "Chennai's dedicated steel logistics company since 2010 — moving steel coils, TMT bars, sheets & plates from Manali Steel Yard across Chennai, Thiruvallur, and Kanchipuram.",
 };
 
 export default function AboutLayout({
