@@ -50,8 +50,8 @@ const socialLinks = [
 
 export function Footer() {
   return (
-    <footer className="bg-[#111111] px-4 py-12 text-white sm:px-6 sm:py-16 lg:px-8 lg:py-[60px]">
-      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4 lg:gap-12">
+    <footer className="bg-[#FDF6F5] text-[#0d0d0d]">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-4 py-12 sm:px-6 sm:py-16 md:grid-cols-2 lg:grid-cols-4 lg:gap-12 lg:px-8 lg:py-[60px]">
         <div className="text-center sm:text-left">
           <Image
             src="/pmg-transports-logo.png"
@@ -60,10 +60,10 @@ export function Footer() {
             width={160}
             className="mx-auto h-20 w-auto object-contain sm:mx-0"
           />
-          <p className="mt-4 text-sm font-semibold text-white/90">
+          <p className="mt-4 text-sm font-semibold text-pmg-red">
             Trusted Since 2010
           </p>
-          <p className="mt-4 text-sm leading-relaxed text-white/80">
+          <p className="mt-4 text-sm leading-relaxed text-[#5f5e5a]">
             Chennai&apos;s dedicated steel logistics company — moving steel coils,
             TMT bars, sheets &amp; plates, pipes &amp; tubes, and structural sections
             from Manali Steel Yard across Chennai, Thiruvallur, and Kanchipuram.
@@ -71,14 +71,14 @@ export function Footer() {
           </p>
         </div>
 
-        <div className="text-center sm:text-left">
-          <h3 className="text-base font-bold text-[#CC1A1A]">Services</h3>
+        <div className="border-t border-[#e5e5e5] pt-8 text-center sm:text-left md:border-t-0 md:pt-0 lg:border-l lg:pl-8">
+          <h3 className="text-base font-bold text-[#0d0d0d]">Services</h3>
           <ul className="mt-4 space-y-3">
             {services.map((service) => (
               <li key={service}>
                 <a
                   href="/services"
-                  className="text-sm text-white transition-colors duration-200 hover:text-[#CC1A1A]"
+                  className="text-sm text-[#0d0d0d] transition-colors duration-200 hover:text-pmg-red"
                 >
                   {service}
                 </a>
@@ -87,14 +87,14 @@ export function Footer() {
           </ul>
         </div>
 
-        <div className="text-center sm:text-left">
-          <h3 className="text-base font-bold text-[#CC1A1A]">Quick Links</h3>
+        <div className="border-t border-[#e5e5e5] pt-8 text-center sm:text-left md:border-t-0 md:pt-0 lg:border-l lg:pl-8">
+          <h3 className="text-base font-bold text-[#0d0d0d]">Quick Links</h3>
           <ul className="mt-4 space-y-3">
             {quickLinks.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="text-sm text-white transition-colors duration-200 hover:text-[#CC1A1A]"
+                  className="text-sm text-[#0d0d0d] transition-colors duration-200 hover:text-pmg-red"
                 >
                   {link.label}
                 </Link>
@@ -103,20 +103,20 @@ export function Footer() {
           </ul>
         </div>
 
-        <div className="text-center sm:text-left">
-          <h3 className="text-base font-bold text-[#CC1A1A]">Contact</h3>
-          <div className="mt-4 space-y-3 text-sm leading-relaxed text-white/90">
+        <div className="border-t border-[#e5e5e5] pt-8 text-center sm:text-left md:border-t-0 md:pt-0 lg:border-l lg:pl-8">
+          <h3 className="text-base font-bold text-[#0d0d0d]">Contact</h3>
+          <div className="mt-4 space-y-3 text-sm leading-relaxed text-[#5f5e5a]">
             <p className="flex flex-col gap-1 sm:block">
               <a
                 href="tel:+919498073311"
-                className="transition-colors duration-200 hover:text-[#CC1A1A]"
+                className="text-[#0d0d0d] transition-colors duration-200 hover:text-pmg-red"
               >
                 +91 94980 73311
               </a>
-              <span className="hidden text-white/60 sm:inline"> / </span>
+              <span className="hidden text-[#5f5e5a] sm:inline"> / </span>
               <a
                 href="tel:+919087273311"
-                className="transition-colors duration-200 hover:text-[#CC1A1A]"
+                className="text-[#0d0d0d] transition-colors duration-200 hover:text-pmg-red"
               >
                 +91 90872 73311
               </a>
@@ -135,7 +135,7 @@ export function Footer() {
                 target={href.startsWith("http") ? "_blank" : undefined}
                 rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
                 aria-label={label}
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition-colors duration-200 hover:bg-[#CC1A1A]"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-[#e5e5e5] bg-white text-[#0d0d0d] transition-colors duration-200 hover:border-pmg-red hover:bg-pmg-red hover:text-white"
               >
                 <Icon className="h-5 w-5" aria-hidden />
               </a>
@@ -144,8 +144,10 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="mx-auto mt-12 max-w-7xl border-t border-white/10 pt-5 text-center text-[13px] text-white/50 sm:text-left">
-        <p>© 2026 PMG Transport Private Limited. All Rights Reserved.</p>
+      <div className="w-full bg-pmg-red px-4 py-4 text-center text-[13px] text-white sm:px-6 sm:text-left lg:px-8">
+        <p className="mx-auto max-w-7xl">
+          © 2026 PMG Transport Private Limited. All Rights Reserved.
+        </p>
       </div>
     </footer>
   );
