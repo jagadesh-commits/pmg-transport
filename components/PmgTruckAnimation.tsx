@@ -13,13 +13,15 @@ export function PmgTruckAnimation({ className = "" }: { className?: string }) {
         <animateTransform
           attributeName="transform"
           type="translate"
-          values="30 0; -90 0"
+          from="30 0"
+          to="-90 0"
           dur="0.9s"
           repeatCount="indefinite"
         />
         <animate
           attributeName="opacity"
-          values="1;0"
+          from="1"
+          to="0"
           dur="0.9s"
           repeatCount="indefinite"
         />
@@ -28,14 +30,16 @@ export function PmgTruckAnimation({ className = "" }: { className?: string }) {
         <animateTransform
           attributeName="transform"
           type="translate"
-          values="30 0; -100 0"
+          from="30 0"
+          to="-90 0"
           dur="0.9s"
           begin="0.3s"
           repeatCount="indefinite"
         />
         <animate
           attributeName="opacity"
-          values="1;0"
+          from="1"
+          to="0"
           dur="0.9s"
           begin="0.3s"
           repeatCount="indefinite"
@@ -45,14 +49,16 @@ export function PmgTruckAnimation({ className = "" }: { className?: string }) {
         <animateTransform
           attributeName="transform"
           type="translate"
-          values="30 0; -85 0"
+          from="30 0"
+          to="-90 0"
           dur="0.9s"
           begin="0.55s"
           repeatCount="indefinite"
         />
         <animate
           attributeName="opacity"
-          values="1;0"
+          from="1"
+          to="0"
           dur="0.9s"
           begin="0.55s"
           repeatCount="indefinite"
@@ -61,11 +67,24 @@ export function PmgTruckAnimation({ className = "" }: { className?: string }) {
 
       <g>
         <animateTransform
+          id="bodyUp"
           attributeName="transform"
           type="translate"
-          values="0 0; 0 -4; 0 0"
-          dur="0.7s"
-          repeatCount="indefinite"
+          from="0 0"
+          to="0 -4"
+          dur="0.35s"
+          begin="0s;bodyDown.end"
+          fill="freeze"
+        />
+        <animateTransform
+          id="bodyDown"
+          attributeName="transform"
+          type="translate"
+          from="0 -4"
+          to="0 0"
+          dur="0.35s"
+          begin="bodyUp.end"
+          fill="freeze"
         />
         <rect x="120" y="85" width="270" height="175" rx="16" fill="#0d0d0d" />
         <rect x="132" y="97" width="246" height="151" rx="8" fill="#CC1A1A" />
@@ -153,7 +172,8 @@ export function PmgTruckAnimation({ className = "" }: { className?: string }) {
         <animateTransform
           attributeName="transform"
           type="translate"
-          values="0 0; -80 0"
+          from="0 0"
+          to="-80 0"
           dur="0.8s"
           repeatCount="indefinite"
         />
