@@ -2,7 +2,7 @@
 
 import { useTruckBooking } from "@/components/TruckBookingProvider";
 import BackToTopButton from "@/components/BackToTop";
-import { AnimatedTruck } from "@/components/AnimatedTruck";
+import { PmgTruckAnimation } from "@/components/PmgTruckAnimation";
 
 const WHATSAPP_NUMBER = "919498073311";
 
@@ -30,7 +30,7 @@ export function FloatingActions() {
         aria-label="Book a Truck"
         className="pointer-events-auto group relative hidden h-14 w-14 items-center justify-center rounded-full bg-[#CC1A1A] text-white shadow-[0_6px_20px_rgba(0,0,0,0.25)] transition hover:scale-105 hover:bg-[#1A5FCC] md:flex sm:w-auto sm:gap-2.5 sm:px-5"
       >
-        <AnimatedTruck className="h-9 w-[51px]" />
+        <PmgTruckAnimation variant="icon" className="h-10 w-[75px]" />
         <span className="hidden text-sm font-semibold sm:inline">Book a Truck</span>
         <span className="pointer-events-none absolute right-full mr-3 hidden whitespace-nowrap rounded-md bg-[#111111] px-3 py-1.5 text-xs font-semibold text-white opacity-0 shadow-lg transition group-hover:opacity-100 sm:hidden">
           Book a Truck

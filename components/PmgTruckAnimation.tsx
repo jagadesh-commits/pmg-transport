@@ -1,4 +1,101 @@
-export function PmgTruckAnimation({ className = "" }: { className?: string }) {
+type PmgTruckAnimationProps = {
+  className?: string;
+  variant?: "full" | "icon";
+};
+
+function PmgTruckIcon({ className = "" }: { className?: string }) {
+  return (
+    <svg
+      viewBox="30 60 340 180"
+      xmlns="http://www.w3.org/2000/svg"
+      width="100%"
+      height="100%"
+      aria-hidden="true"
+      className={className}
+    >
+      <g>
+        <animateTransform
+          id="pmgBobUp"
+          attributeName="transform"
+          type="translate"
+          from="0 0"
+          to="0 -6"
+          dur="0.7s"
+          begin="0s;pmgBobDown.end"
+          fill="freeze"
+        />
+        <animateTransform
+          id="pmgBobDown"
+          attributeName="transform"
+          type="translate"
+          from="0 -6"
+          to="0 0"
+          dur="0.7s"
+          begin="pmgBobUp.end"
+          fill="freeze"
+        />
+        <rect x="148" y="80" width="188" height="92" rx="6" fill="#ffffff" />
+        <rect x="88" y="172" width="222" height="14" rx="3" fill="#7a0f0f" />
+        <rect x="64" y="178" width="18" height="10" rx="2" fill="#7a0f0f" />
+        <rect x="310" y="174" width="14" height="9" rx="2" fill="#7a0f0f" />
+        <path
+          d="M65 172 v-38 q0 -7 6 -10 l24 -13 q4 -2 9 -2 h30 q6 0 6 6 v57 z"
+          fill="#ffffff"
+        />
+        <path
+          d="M97 114 h26 q4 0 4 4 v18 q0 4 -4 4 h-36 q-5 0 -2 -5 l7 -16 q2 -5 5 -5 z"
+          fill="#CC1A1A"
+          opacity="0.85"
+        />
+        <rect x="63" y="164" width="12" height="8" rx="2" fill="#f5c542" />
+      </g>
+      <g>
+        <animateTransform
+          attributeName="transform"
+          type="rotate"
+          from="0 103 195"
+          to="360 103 195"
+          dur="0.7s"
+          repeatCount="indefinite"
+        />
+        <circle cx="103" cy="195" r="19" fill="#7a0f0f" />
+        <circle cx="103" cy="195" r="10.5" fill="#ffffff" />
+        <circle cx="103" cy="195" r="4" fill="#7a0f0f" />
+        <rect x="101.5" y="184" width="3" height="7" fill="#e08585" />
+      </g>
+      <g>
+        <animateTransform
+          attributeName="transform"
+          type="rotate"
+          from="0 237 195"
+          to="360 237 195"
+          dur="0.7s"
+          repeatCount="indefinite"
+        />
+        <circle cx="237" cy="195" r="19" fill="#7a0f0f" />
+        <circle cx="237" cy="195" r="10.5" fill="#ffffff" />
+        <circle cx="237" cy="195" r="4" fill="#7a0f0f" />
+        <rect x="235.5" y="184" width="3" height="7" fill="#e08585" />
+      </g>
+      <g>
+        <animateTransform
+          attributeName="transform"
+          type="rotate"
+          from="0 277 195"
+          to="360 277 195"
+          dur="0.7s"
+          repeatCount="indefinite"
+        />
+        <circle cx="277" cy="195" r="19" fill="#7a0f0f" />
+        <circle cx="277" cy="195" r="10.5" fill="#ffffff" />
+        <circle cx="277" cy="195" r="4" fill="#7a0f0f" />
+        <rect x="275.5" y="184" width="3" height="7" fill="#e08585" />
+      </g>
+    </svg>
+  );
+}
+
+function PmgTruckFull({ className = "" }: { className?: string }) {
   return (
     <svg
       viewBox="0 0 680 400"
@@ -190,4 +287,14 @@ export function PmgTruckAnimation({ className = "" }: { className?: string }) {
       </g>
     </svg>
   );
+}
+
+export function PmgTruckAnimation({
+  className = "",
+  variant = "full",
+}: PmgTruckAnimationProps) {
+  if (variant === "icon") {
+    return <PmgTruckIcon className={className} />;
+  }
+  return <PmgTruckFull className={className} />;
 }
