@@ -6,20 +6,24 @@ type PmgTruckAnimationProps = {
 function PmgTruckIcon({ className = "" }: { className?: string }) {
   return (
     <svg
-      viewBox="30 60 340 180"
+      viewBox="40 70 320 160"
       xmlns="http://www.w3.org/2000/svg"
       width="100%"
       height="100%"
       aria-hidden="true"
       className={className}
     >
+      {/* Ground shadow */}
+      <ellipse cx="210" cy="220" rx="120" ry="8" fill="#ffffff" opacity="0.25" />
+
+      {/* Body + cab (suspension bob) */}
       <g>
         <animateTransform
           id="pmgBobUp"
           attributeName="transform"
           type="translate"
           from="0 0"
-          to="0 -6"
+          to="0 -5"
           dur="0.7s"
           begin="0s;pmgBobDown.end"
           fill="freeze"
@@ -28,68 +32,95 @@ function PmgTruckIcon({ className = "" }: { className?: string }) {
           id="pmgBobDown"
           attributeName="transform"
           type="translate"
-          from="0 -6"
+          from="0 -5"
           to="0 0"
           dur="0.7s"
           begin="pmgBobUp.end"
           fill="freeze"
         />
-        <rect x="148" y="80" width="188" height="92" rx="6" fill="#ffffff" />
-        <rect x="88" y="172" width="222" height="14" rx="3" fill="#7a0f0f" />
-        <rect x="64" y="178" width="18" height="10" rx="2" fill="#7a0f0f" />
-        <rect x="310" y="174" width="14" height="9" rx="2" fill="#7a0f0f" />
+
+        {/* Trailer */}
+        <rect x="150" y="82" width="180" height="88" rx="5" fill="#ffffff" />
+        {/* Panel lines */}
+        <line x1="158" y1="100" x2="322" y2="100" stroke="#CC1A1A" strokeWidth="1.2" opacity="0.25" />
+        <line x1="158" y1="118" x2="322" y2="118" stroke="#CC1A1A" strokeWidth="1.2" opacity="0.25" />
+        <line x1="158" y1="136" x2="322" y2="136" stroke="#CC1A1A" strokeWidth="1.2" opacity="0.25" />
+        <line x1="158" y1="154" x2="322" y2="154" stroke="#CC1A1A" strokeWidth="1.2" opacity="0.25" />
+        {/* PMG mark */}
+        <text
+          x="240"
+          y="138"
+          textAnchor="middle"
+          fontFamily="Arial, Helvetica, sans-serif"
+          fontWeight="bold"
+          fontSize="36"
+          fill="#CC1A1A"
+        >
+          PMG
+        </text>
+
+        {/* Cab */}
         <path
-          d="M65 172 v-38 q0 -7 6 -10 l24 -13 q4 -2 9 -2 h30 q6 0 6 6 v57 z"
+          d="M70 170 V128 q0 -8 7 -12 l28 -16 q5 -3 10 -3 h34 q7 0 7 7 v66 z"
           fill="#ffffff"
         />
+        {/* Window (light blue) */}
         <path
-          d="M97 114 h26 q4 0 4 4 v18 q0 4 -4 4 h-36 q-5 0 -2 -5 l7 -16 q2 -5 5 -5 z"
-          fill="#CC1A1A"
-          opacity="0.85"
+          d="M108 112 h28 q5 0 5 5 v22 q0 5 -5 5 h-40 q-6 0 -3 -6 l8 -20 q2 -6 7 -6 z"
+          fill="#A8D4E8"
         />
-        <rect x="63" y="164" width="12" height="8" rx="2" fill="#f5c542" />
+        {/* Headlight */}
+        <rect x="68" y="158" width="12" height="8" rx="2" fill="#f5c542" />
+
+        {/* Chassis */}
+        <rect x="78" y="168" width="240" height="12" rx="3" fill="#3d3d3d" />
+        <rect x="62" y="174" width="20" height="8" rx="2" fill="#3d3d3d" />
+        <rect x="312" y="170" width="16" height="8" rx="2" fill="#3d3d3d" />
       </g>
+
+      {/* Front wheel */}
       <g>
         <animateTransform
           attributeName="transform"
           type="rotate"
-          from="0 103 195"
-          to="360 103 195"
+          from="0 100 192"
+          to="360 100 192"
           dur="0.7s"
           repeatCount="indefinite"
         />
-        <circle cx="103" cy="195" r="19" fill="#7a0f0f" />
-        <circle cx="103" cy="195" r="10.5" fill="#ffffff" />
-        <circle cx="103" cy="195" r="4" fill="#7a0f0f" />
-        <rect x="101.5" y="184" width="3" height="7" fill="#e08585" />
+        <circle cx="100" cy="192" r="18" fill="#2a2a2a" />
+        <circle cx="100" cy="192" r="10" fill="#9a9a9a" />
+        <circle cx="100" cy="192" r="3.5" fill="#2a2a2a" />
       </g>
+
+      {/* Rear wheel 1 */}
       <g>
         <animateTransform
           attributeName="transform"
           type="rotate"
-          from="0 237 195"
-          to="360 237 195"
+          from="0 248 192"
+          to="360 248 192"
           dur="0.7s"
           repeatCount="indefinite"
         />
-        <circle cx="237" cy="195" r="19" fill="#7a0f0f" />
-        <circle cx="237" cy="195" r="10.5" fill="#ffffff" />
-        <circle cx="237" cy="195" r="4" fill="#7a0f0f" />
-        <rect x="235.5" y="184" width="3" height="7" fill="#e08585" />
+        <circle cx="248" cy="192" r="18" fill="#2a2a2a" />
+        <circle cx="248" cy="192" r="10" fill="#9a9a9a" />
+        <circle cx="248" cy="192" r="3.5" fill="#2a2a2a" />
       </g>
+
+      {/* Rear wheel 2 */}
       <g>
         <animateTransform
           attributeName="transform"
           type="rotate"
-          from="0 277 195"
-          to="360 277 195"
+          from="0 288 192"
+          to="360 288 192"
           dur="0.7s"
           repeatCount="indefinite"
         />
-        <circle cx="277" cy="195" r="19" fill="#7a0f0f" />
-        <circle cx="277" cy="195" r="10.5" fill="#ffffff" />
-        <circle cx="277" cy="195" r="4" fill="#7a0f0f" />
-        <rect x="275.5" y="184" width="3" height="7" fill="#e08585" />
+        <circle cx="288" cy="192" r="18" fill="#2a2a2a" />
+        <circle cx="288" cy="192" r="10" fill="#9a9a9a" />
+        <circle cx="288" cy="192" r="3.5" fill="#2a2a2a" />
       </g>
     </svg>
   );
