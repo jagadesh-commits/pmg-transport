@@ -1,37 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
 
 const items = [
-  { label: "Years of Experience", value: 14 },
-  { label: "Loads Delivered", value: 2800 },
-  { label: "Fleet Assets", value: 320 },
-  { label: "Districts Served", value: 3 },
+  { label: "Years of Experience", value: 14, suffix: "+" },
+  { label: "Loads Delivered", value: 500, suffix: "+" },
+  { label: "Fleet Assets", value: 10, suffix: "+" },
+  { label: "Districts Served", value: 3, suffix: "" },
 ] as const;
-
-function AnimatedNumber({ value }: { value: number }) {
-  const [n, setN] = useState(0);
-
-  useEffect(() => {
-    const durationMs = 2000;
-    const tickMs = 32;
-    const steps = Math.max(1, Math.ceil(durationMs / tickMs));
-    let step = 0;
-    const id = setInterval(() => {
-      step += 1;
-      const next = Math.min(value, Math.round((value * step) / steps));
-      setN(next);
-      if (step >= steps) {
-        setN(value);
-        clearInterval(id);
-      }
-    }, tickMs);
-    return () => clearInterval(id);
-  }, [value]);
-
-  return <span className="tabular-nums">{n}+</span>;
-}
 
 export function Stats() {
   return (
@@ -48,8 +24,9 @@ export function Stats() {
             key={item.label}
             className="flex flex-col items-center justify-center border-b border-r border-white/20 px-4 py-12 text-center max-md:[&:nth-child(2n)]:border-r-0 max-md:[&:nth-child(n+3)]:border-b-0 md:border-b-0 md:border-r md:[&:nth-child(4n)]:border-r-0 md:py-16"
           >
-            <span className="font-heading text-4xl font-extrabold text-white sm:text-5xl md:text-[52px]">
-              <AnimatedNumber value={item.value} />
+            <span className="font-heading text-4xl font-extrabold text-white sm:text-5xl md:text-[52px] tabular-nums">
+              {item.value}
+              {item.suffix}
             </span>
             <span
               className="mt-3 max-w-[11rem] text-[11px] font-semibold uppercase tracking-[0.2em] text-white/75 sm:text-[13px]"

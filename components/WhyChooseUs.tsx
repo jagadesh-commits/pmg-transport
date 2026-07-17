@@ -22,7 +22,7 @@ const features = [
   },
   {
     title: "Expert Crew",
-    text: "Trained operators for oversized and sensitive cargo",
+    text: "Crews trained for coil, TMT, and plate handling with proper load securing",
   },
   {
     title: "Competitive Rates",
