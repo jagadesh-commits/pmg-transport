@@ -53,6 +53,20 @@ export function FAQ() {
       transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
       className="bg-[#F5F5F5] py-20 sm:py-28"
     >
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: faqs.map((faq) => ({
+              "@type": "Question",
+              name: faq.question,
+              acceptedAnswer: { "@type": "Answer", text: faq.answer },
+            })),
+          }),
+        }}
+      />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionBadge icon={<QuestionIcon />}>FAQ</SectionBadge>
         <h2 className="font-heading mt-6 text-4xl font-extrabold uppercase tracking-tight text-pmg-text sm:text-5xl md:text-6xl">

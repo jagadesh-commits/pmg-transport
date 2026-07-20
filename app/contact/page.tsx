@@ -2,9 +2,12 @@ import type { Metadata } from "next";
 import { Contact } from "@/components/Contact";
 
 export const metadata: Metadata = {
-  title: "Contact Us | PMG Transport Chennai",
+  title: {
+    absolute: "Contact PMG Transports | Chennai Steel Transport",
+  },
   description:
-    "Get a steel transport quote. Call +91 94980 73311 or visit us at Sathangadu Iron & Steel Market, Manali, Chennai. Open Mon-Sat 9AM-6PM.",
+    "Contact PMG Transports for steel transport quotes. Call +91 94980 73311 or WhatsApp us. Located at Sathangadu Iron & Steel Market, Manali, Chennai.",
+  alternates: { canonical: "/contact" },
 };
 
 export default function ContactPage() {
