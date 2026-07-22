@@ -38,7 +38,7 @@ export function Navbar() {
             <div className="shrink-0 sm:hidden">
               <PillButton
                 variant="primary"
-                onClick={openBooking}
+                onClick={() => openBooking()}
                 className="!py-1.5 !pl-1.5 !pr-5 !text-xs !whitespace-nowrap"
               >
                 Get Quote
@@ -66,7 +66,7 @@ export function Navbar() {
           <div className="hidden shrink-0 sm:block">
             <PillButton
               variant="primary"
-              onClick={openBooking}
+              onClick={() => openBooking()}
               className="!whitespace-nowrap"
             >
               Get Quote

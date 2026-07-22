@@ -50,7 +50,7 @@ export function FAQ() {
       initial={{ opacity: 0, y: 28 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.55, ease: "easeOut" }}
       className="bg-[#F5F5F5] py-20 sm:py-28"
     >
       <script

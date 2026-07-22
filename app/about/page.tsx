@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { SectionBadge } from "@/components/SectionBadge";
 import { PillButton } from "@/components/PillButton";
 
@@ -37,12 +37,16 @@ const leaders = [
   },
 ] as const;
 
-const cardVariants = {
-  hidden: { opacity: 0, y: 28 },
+const cardVariants: Variants = {
+  hidden: { opacity: 0, y: 30 },
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.55, delay: i * 0.15, ease: [0.22, 1, 0.36, 1] },
+    transition: {
+      duration: 0.6,
+      delay: i * 0.15,
+      ease: "easeOut",
+    },
   }),
 };
 
@@ -118,7 +122,7 @@ export default function AboutPage() {
         initial={{ opacity: 0, y: 28 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-80px" }}
-        transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.55, ease: "easeOut" }}
         className="bg-pmg-surface py-16 sm:py-24"
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

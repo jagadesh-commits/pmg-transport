@@ -15,7 +15,7 @@ export function Stats() {
       initial={{ opacity: 0, y: 28 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.55, ease: "easeOut" }}
       className="border-y border-white/20 bg-pmg-red"
     >
       <div className="mx-auto grid max-w-7xl grid-cols-2 md:grid-cols-4">

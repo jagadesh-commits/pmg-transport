@@ -231,7 +231,7 @@ export function Hero() {
           >
             <button
               type="button"
-              onClick={openBooking}
+              onClick={() => openBooking()}
               className="group inline-flex w-full items-center justify-center gap-3 rounded-full bg-[#CC1A1A] py-2 pl-2 pr-7 text-sm font-semibold tracking-wide text-white shadow-lg shadow-black/15 transition-all duration-300 ease-in-out hover:scale-[1.02] hover:bg-[#1A5FCC] active:scale-[0.98] active:bg-[#1A5FCC] sm:w-auto sm:justify-start sm:pr-8 sm:text-base"
             >
               <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white text-[#111111]">
@@ -257,7 +257,7 @@ export function Hero() {
           className="relative z-10 flex w-full justify-center lg:w-[45%] lg:justify-end"
           initial={{ opacity: 0, x: 40 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.25, duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ delay: 0.25, duration: 0.65, ease: "easeOut" }}
         >
           <FareCalculatorCard />
         </motion.div>

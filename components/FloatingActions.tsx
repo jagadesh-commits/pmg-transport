@@ -26,7 +26,7 @@ export function FloatingActions() {
 
       <button
         type="button"
-        onClick={openBooking}
+        onClick={() => openBooking()}
         aria-label="Book a Truck"
         className="pointer-events-auto group relative hidden h-14 w-14 items-center justify-center rounded-full bg-[#CC1A1A] text-white shadow-[0_6px_20px_rgba(0,0,0,0.25)] transition hover:scale-105 hover:bg-[#1A5FCC] md:flex sm:w-auto sm:gap-2.5 sm:px-5"
       >
