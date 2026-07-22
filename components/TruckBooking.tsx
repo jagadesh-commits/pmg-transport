@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import type { ReactNode } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import {
@@ -9,6 +9,7 @@ import {
   getFareRate,
   PICKUP_LOCATION,
 } from "@/lib/fareRates";
+import type { WeightUnit } from "@/components/TruckBookingProvider";
 
 type TruckType = {
   id: string;
@@ -88,10 +89,18 @@ export function TruckBooking({
   trigger,
   isOpen: controlledIsOpen,
   onOpenChange,
+  initialDestination,
+  initialWeight,
+  initialWeightUnit = "Tons",
+  initialStep = 1,
 }: {
   trigger?: (open: () => void) => ReactNode;
   isOpen?: boolean;
   onOpenChange?: (open: boolean) => void;
+  initialDestination?: string;
+  initialWeight?: string;
+  initialWeightUnit?: WeightUnit;
+  initialStep?: 1 | 2;
 }) {
   const [internalOpen, setInternalOpen] = useState(false);
   const isControlled = controlledIsOpen !== undefined && onOpenChange !== undefined;
@@ -109,6 +118,30 @@ export function TruckBooking({
   const [email, setEmail] = useState("");
   const [mobile, setMobile] = useState("");
   const [error, setError] = useState("");
+
+  useEffect(() => {
+    if (!isOpen) return;
+
+    setDrop(initialDestination ?? "");
+    setTruckId("");
+    setGoods("");
+    setPickupDate("");
+    setName("");
+    setEmail("");
+    setMobile("");
+    setError("");
+
+    const raw = Number(initialWeight);
+    if (initialWeight?.trim() && raw > 0) {
+      const kg = initialWeightUnit === "Tons" ? raw * 1000 : raw;
+      setWeight(String(kg));
+    } else {
+      setWeight("");
+    }
+
+    // UI steps are 1-indexed; internal steps are 0-indexed
+    setStep(((initialStep ?? 1) - 1) as Step);
+  }, [isOpen, initialDestination, initialWeight, initialWeightUnit, initialStep]);
 
   const destination = getFareRate(drop);
   const truck = TRUCK_TYPES.find((t) => t.id === truckId) ?? null;

@@ -1,105 +1,33 @@
 "use client";
 
 import { useState } from "react";
+import { FARE_RATES, PICKUP_LOCATION } from "@/lib/fareRates";
+import {
+  useTruckBooking,
+  type WeightUnit,
+} from "@/components/TruckBookingProvider";
 
-const PICKUP_LOCATION = "Manali Steel Yard, Chennai";
-const BUSINESS_PHONE = "919498073311";
-
-type Rate = { base: number; extra: number };
-
-const rates: Record<string, Rate> = {
-  "Chengalpattu & Madhavaram": { base: 9000, extra: 900 },
-  Kanchipuram: { base: 9000, extra: 900 },
-  "Maraimalai Nagar": { base: 8000, extra: 800 },
-  Sriperumbudur: { base: 5000, extra: 500 },
-  Oragadam: { base: 6000, extra: 600 },
-  Potheri: { base: 4500, extra: 450 },
-  "Ambattur & Kattur": { base: 4500, extra: 450 },
-  Vichoor: { base: 2500, extra: 250 },
-  Vyasarpadi: { base: 2500, extra: 250 },
-  Ernavur: { base: 2000, extra: 200 },
-  Thiruttani: { base: 8000, extra: 800 },
-  Perungudi: { base: 5000, extra: 500 },
-  Velachery: { base: 5000, extra: 500 },
-  Tambaram: { base: 5500, extra: 550 },
-  Thiruporur: { base: 8000, extra: 800 },
-  "Tiruvallur & Kakkalur": { base: 5000, extra: 500 },
-  Guindy: { base: 5000, extra: 500 },
-  "Sri City": { base: 8000, extra: 800 },
-};
-
-const DESTINATIONS = Object.keys(rates);
-
-function formatINR(value: number): string {
-  return "\u20B9" + Math.round(value).toLocaleString("en-IN");
-}
-
-type WeightUnit = "Tons" | "KG";
-
-type Result = {
-  destination: string;
-  weightValue: number;
-  weightUnit: WeightUnit;
-  weightInTons: number;
-  low: number;
-  high: number;
-};
-
-function formatWeightForMessage(result: Result): string {
-  if (result.weightUnit === "Tons") {
-    return `${result.weightValue} Tons`;
-  }
-  const tonsLabel =
-    result.weightInTons % 1 === 0
-      ? String(result.weightInTons)
-      : result.weightInTons.toFixed(2).replace(/\.?0+$/, "");
-  return `${result.weightValue} KG (${tonsLabel} Tons)`;
-}
+const DESTINATIONS = FARE_RATES.map((r) => r.destination);
 
 export function FareCalculatorCard() {
+  const { openBooking } = useTruckBooking();
   const [destination, setDestination] = useState("");
   const [weight, setWeight] = useState("");
   const [weightUnit, setWeightUnit] = useState<WeightUnit>("Tons");
-  const [error, setError] = useState("");
-  const [result, setResult] = useState<Result | null>(null);
 
-  function calculate() {
+  function handleCheckFare() {
     if (!destination) {
-      setError("Please select a destination");
-      setResult(null);
-      return;
-    }
-    const value = Number(weight);
-    if (!weight.trim() || !value || value <= 0) {
-      setError("Please enter valid weight");
-      setResult(null);
+      openBooking({ initialStep: 1 });
       return;
     }
 
-    setError("");
-
-    const weightInTons = weightUnit === "KG" ? value / 1000 : value;
-    const rate = rates[destination];
-    const fare =
-      weightInTons <= 10
-        ? rate.base
-        : rate.base + (weightInTons - 10) * rate.extra;
-
-    setResult({
-      destination,
-      weightValue: value,
-      weightUnit,
-      weightInTons,
-      low: fare,
-      high: Math.round(fare * 1.1),
+    openBooking({
+      initialDestination: destination,
+      initialWeight: weight.trim() || undefined,
+      initialWeightUnit: weightUnit,
+      initialStep: 2,
     });
   }
-
-  const whatsappHref = result
-    ? `https://wa.me/${BUSINESS_PHONE}?text=${encodeURIComponent(
-        `Hi PMG Transport, I need a truck from Manali Steel Yard to ${result.destination} for ${formatWeightForMessage(result)}. Estimated fare: ${formatINR(result.low)} - ${formatINR(result.high)}`,
-      )}`
-    : "#";
 
   const fieldWrap =
     "flex items-center gap-3 rounded-xl border border-[#E0E0E0] px-4 py-3";
@@ -118,7 +46,7 @@ export function FareCalculatorCard() {
             <span className="h-2.5 w-2.5 shrink-0 rounded-full bg-green-500" />
             <input
               type="text"
-              value={PICKUP_LOCATION}
+              value={`${PICKUP_LOCATION}, Chennai`}
               readOnly
               disabled
               className="w-full cursor-not-allowed bg-transparent text-sm text-pmg-text outline-none"
@@ -165,44 +93,13 @@ export function FareCalculatorCard() {
           </div>
         </div>
 
-        {error && (
-          <p className="mt-3 text-sm font-medium text-[#CC1A1A]">{error}</p>
-        )}
-
         <button
           type="button"
-          onClick={calculate}
+          onClick={handleCheckFare}
           className="mt-4 w-full rounded-xl bg-[#CC1A1A] px-6 py-3.5 text-base font-bold text-white transition-all duration-300 ease-in-out hover:bg-[#1A5FCC]"
         >
           Check Truck Fare
         </button>
-
-        {result && (
-          <div className="mt-5 border-t border-[#E0E0E0] pt-5 text-center">
-            <p className="text-xl font-bold leading-tight text-[#CC1A1A] sm:text-2xl">
-              {formatINR(result.low)} - {formatINR(result.high)}
-            </p>
-            <p className="mt-2 text-xs text-pmg-muted">
-              * Final fare confirmed by our team
-            </p>
-            <div className="mt-4 flex gap-3">
-              <a
-                href={whatsappHref}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex flex-1 items-center justify-center rounded-full bg-[#25D366] px-3 py-2.5 text-sm font-bold text-white transition hover:brightness-95"
-              >
-                Book via WhatsApp
-              </a>
-              <a
-                href={`tel:+${BUSINESS_PHONE}`}
-                className="inline-flex flex-1 items-center justify-center rounded-full bg-[#CC1A1A] px-3 py-2.5 text-sm font-bold text-white transition hover:brightness-95"
-              >
-                Call Now
-              </a>
-            </div>
-          </div>
-        )}
       </div>
     </div>
   );
