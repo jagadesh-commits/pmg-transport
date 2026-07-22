@@ -33,7 +33,7 @@ export const movingCompanySchema = {
     },
   ],
   description:
-    "Local steel transport and logistics company moving steel coils, TMT bars, sheets & plates, pipes & tubes from Manali Steel Yard across Chennai, Thiruvallur, and Kanchipuram. Trusted since 2010.",
+    "Local steel transport and logistics company moving steel coils, TMT bars, sheets & plates, pipes & tubes from Manali Steel Yard across Chennai, Thiruvallur, and Kanchipuram. Established 2026.",
   image: `${SITE_URL}/pmg-transports-logo.png`,
   sameAs: ["https://wa.me/919498073311"],
 };

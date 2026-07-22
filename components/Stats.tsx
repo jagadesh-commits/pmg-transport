@@ -3,10 +3,10 @@
 import { motion } from "framer-motion";
 
 const items = [
-  { label: "Years of Experience", value: 14, suffix: "+" },
-  { label: "Loads Delivered", value: 500, suffix: "+" },
-  { label: "Fleet Assets", value: 10, suffix: "+" },
-  { label: "Districts Served", value: 3, suffix: "" },
+  { label: "Fleet Strength", display: "11+" },
+  { label: "Districts Served", display: "3" },
+  { label: "Routes Covered", display: "18+" },
+  { label: "Dispatch Support", display: "24/7" },
 ] as const;
 
 export function Stats() {
@@ -25,8 +25,7 @@ export function Stats() {
             className="flex flex-col items-center justify-center border-b border-r border-white/20 px-4 py-12 text-center max-md:[&:nth-child(2n)]:border-r-0 max-md:[&:nth-child(n+3)]:border-b-0 md:border-b-0 md:border-r md:[&:nth-child(4n)]:border-r-0 md:py-16"
           >
             <span className="font-heading text-4xl font-extrabold text-white sm:text-5xl md:text-[52px] tabular-nums">
-              {item.value}
-              {item.suffix}
+              {item.display}
             </span>
             <span
               className="mt-3 max-w-[11rem] text-[11px] font-semibold uppercase tracking-[0.2em] text-white/75 sm:text-[13px]"

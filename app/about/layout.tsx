@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: {
-    absolute: "About PMG Transports | Steel Logistics Chennai Since 2010",
+    absolute: "About PMG Transports | Steel Logistics Chennai — Established 2026",
   },
   description:
-    "PMG Transports is a Chennai-based steel transport and logistics company operating from Manali Steel Yard since 2010. Serving Chennai, Thiruvallur and Kanchipuram.",
+    "PMG Transports is a Chennai-based steel transport and logistics company operating from the Sathangadu Iron & Steel Market in Manali. Established 2026. Serving Chennai, Thiruvallur and Kanchipuram.",
   alternates: { canonical: "/about" },
 };
 

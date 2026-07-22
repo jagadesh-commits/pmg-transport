@@ -195,7 +195,7 @@ export function Hero() {
               icon={<ShieldIcon />}
               className="text-[11px] sm:text-xs"
             >
-              Trusted Since 2010
+              Established 2026
             </SectionBadge>
           </motion.div>
 

@@ -61,13 +61,13 @@ export function Footer() {
             className="mx-auto h-20 w-auto object-contain sm:mx-0"
           />
           <p className="mt-4 text-sm font-semibold text-pmg-red">
-            Trusted Since 2010
+            Established 2026
           </p>
           <p className="mt-4 text-sm leading-relaxed text-[#5f5e5a]">
             Chennai&apos;s dedicated steel logistics company — moving steel coils,
             TMT bars, sheets &amp; plates, pipes &amp; tubes, and structural sections
             from Manali Steel Yard across Chennai, Thiruvallur, and Kanchipuram.
-            Trusted since 2010.
+            Established in 2026.
           </p>
         </div>
 
