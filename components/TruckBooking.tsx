@@ -4,7 +4,6 @@ import { useEffect, useMemo, useState } from "react";
 import type { ReactNode } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import {
-  calculateFare,
   FARE_RATES,
   getFareRate,
   PICKUP_LOCATION,
@@ -42,6 +41,16 @@ const GOODS_TYPES = [
 
 function formatINR(value: number): string {
   return "\u20B9" + Math.round(value).toLocaleString("en-IN");
+}
+
+function formatWeightLabel(value: string, unit: WeightUnit): string {
+  if (unit === "Tons") return `${value} Tons`;
+  const tons = Number(value) / 1000;
+  const tonsLabel =
+    tons % 1 === 0
+      ? String(tons)
+      : tons.toFixed(2).replace(/\.?0+$/, "");
+  return `${value} KG (${tonsLabel} Tons)`;
 }
 
 const BUSINESS_WHATSAPP = "919498073311";
@@ -113,6 +122,7 @@ export function TruckBooking({
   const [truckId, setTruckId] = useState("");
   const [goods, setGoods] = useState("");
   const [weight, setWeight] = useState("");
+  const [weightUnit, setWeightUnit] = useState<WeightUnit>("Tons");
   const [pickupDate, setPickupDate] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -130,11 +140,11 @@ export function TruckBooking({
     setEmail("");
     setMobile("");
     setError("");
+    setWeightUnit(initialWeightUnit ?? "Tons");
 
     const raw = Number(initialWeight);
     if (initialWeight?.trim() && raw > 0) {
-      const kg = initialWeightUnit === "Tons" ? raw * 1000 : raw;
-      setWeight(String(kg));
+      setWeight(initialWeight.trim());
     } else {
       setWeight("");
     }
@@ -147,13 +157,19 @@ export function TruckBooking({
   const truck = TRUCK_TYPES.find((t) => t.id === truckId) ?? null;
 
   const fare = useMemo(() => {
-    const weightKg = Number(weight);
-    if (!drop || !weightKg || weightKg <= 0) return null;
-    return calculateFare(drop, weightKg);
-  }, [drop, weight]);
+    const rate = getFareRate(drop);
+    const raw = Number(weight);
+    if (!rate || !raw || raw <= 0) return null;
+
+    const weightInTons = weightUnit === "KG" ? raw / 1000 : raw;
+    if (weightInTons <= 10) return rate.rateFor10Tons;
+    return rate.rateFor10Tons + (weightInTons - 10) * rate.perExtraTon;
+  }, [drop, weight, weightUnit]);
 
   const fareLabel =
     fare !== null ? formatINR(fare) : "Contact us for a custom quote";
+
+  const weightLabel = formatWeightLabel(weight, weightUnit);
 
   function buildMessage(): string {
     const lines = [
@@ -169,7 +185,7 @@ export function TruckBooking({
       "",
       `*Truck:* ${truck ? `${truck.name} (${truck.capacity})` : "-"}`,
       `*Goods:* ${goods}`,
-      `*Weight:* ${weight} Kg`,
+      `*Weight:* ${weightLabel}`,
       "",
       `*Estimated Fare:* ${fareLabel}`,
       "_System-generated estimate. Final rate confirmed by our team (10 am - 6 pm)._",
@@ -191,6 +207,7 @@ export function TruckBooking({
     setTruckId("");
     setGoods("");
     setWeight("");
+    setWeightUnit("Tons");
     setPickupDate("");
     setName("");
     setEmail("");
@@ -427,17 +444,31 @@ export function TruckBooking({
                       </div>
                       <div>
                         <label htmlFor="tb-weight" className={labelCls}>
-                          Approx. Weight (Kg)
+                          Approx. Weight
                         </label>
-                        <input
-                          id="tb-weight"
-                          type="number"
-                          min="1"
-                          value={weight}
-                          onChange={(e) => setWeight(e.target.value)}
-                          className={inputCls}
-                          placeholder="e.g. 1500"
-                        />
+                        <div className="mt-2 flex gap-3">
+                          <input
+                            id="tb-weight"
+                            type="number"
+                            min="1"
+                            value={weight}
+                            onChange={(e) => setWeight(e.target.value)}
+                            className="w-[65%] rounded-lg border border-pmg-border bg-white px-4 py-3 text-pmg-text outline-none transition focus:border-pmg-red focus:ring-2 focus:ring-[rgba(204,26,26,0.2)]"
+                            placeholder="e.g. 1500"
+                          />
+                          <select
+                            id="tb-weight-unit"
+                            value={weightUnit}
+                            onChange={(e) =>
+                              setWeightUnit(e.target.value as WeightUnit)
+                            }
+                            className="w-[35%] rounded-lg border border-pmg-border bg-white px-4 py-3 text-pmg-text outline-none transition focus:border-pmg-red focus:ring-2 focus:ring-[rgba(204,26,26,0.2)]"
+                            aria-label="Weight unit"
+                          >
+                            <option value="Tons">Tons</option>
+                            <option value="KG">KG</option>
+                          </select>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -509,7 +540,7 @@ export function TruckBooking({
                       {[
                         { label: "Name", value: name },
                         { label: "Mobile", value: mobile },
-                        { label: "Weight", value: `${weight} Kg` },
+                        { label: "Weight", value: weightLabel },
                         { label: "Goods", value: goods },
                       ].map((row) => (
                         <div
