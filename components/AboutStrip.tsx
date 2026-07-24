@@ -19,9 +19,9 @@ function TruckIcon() {
 }
 
 const statBoxes = [
-  { num: "500+", label: "Routes Covered" },
-  { num: "99%", label: "On-Time Rate" },
-  { num: "24/7", label: "Support" },
+  { num: "18+", label: "Routes Covered" },
+  { num: "11+", label: "Fleet Strength" },
+  { num: "24/7", label: "Dispatch Support" },
   { num: "3", label: "Districts Served" },
 ];
 
@@ -39,15 +39,16 @@ export function AboutStrip() {
           <div>
             <SectionBadge icon={<TruckIcon />}>About PMG</SectionBadge>
             <p className="font-heading mt-8 text-7xl font-black leading-none text-pmg-red sm:text-8xl">
-              14+
+              11+
             </p>
             <p className="font-heading mt-2 text-xl font-bold uppercase tracking-wide text-pmg-text">
-              Years of Moving Steel
+              Trucks in Our Fleet
             </p>
             <p className="mt-6 text-lg leading-relaxed text-pmg-muted">
               PMG Transport is built for steel. From mill pickup at Manali Steel Yard
               to fabricator handoff, we coordinate every mile with dispatch discipline
-              and crews who understand coil, TMT, and plate handling. We serve Chennai,
+              and crews who understand coil, TMT, and plate handling. Backed by four
+              decades of family experience in the steel trade, we serve Chennai,
               Thiruvallur, and Kanchipuram with local assets positioned to keep steel
               moving on schedule.
             </p>
