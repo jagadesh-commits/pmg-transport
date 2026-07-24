@@ -88,6 +88,7 @@ export default function RootLayout({
                 "Steel transport and logistics company in Chennai serving Chennai, Thiruvallur and Kanchipuram from Manali Steel Yard.",
               url: "https://pmg-transport-iota.vercel.app",
               telephone: "+919498073311",
+              email: "pmg.p.ltd@gmail.com",
               address: {
                 "@type": "PostalAddress",
                 streetAddress:

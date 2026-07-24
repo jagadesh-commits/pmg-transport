@@ -122,6 +122,14 @@ export function Footer() {
               </a>
             </p>
             <p>
+              <a
+                href="mailto:pmg.p.ltd@gmail.com"
+                className="text-[#0d0d0d] transition-colors duration-200 hover:text-pmg-red"
+              >
+                pmg.p.ltd@gmail.com
+              </a>
+            </p>
+            <p>
               D-196, Sathangadu Iron &amp; Steel Market, Manali, Chennai -
               600068
             </p>

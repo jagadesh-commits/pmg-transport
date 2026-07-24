@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import type { ReactNode } from "react";
 import { motion } from "framer-motion";
+import { Mail } from "lucide-react";
 import { SectionBadge } from "@/components/SectionBadge";
 import { PillButton } from "@/components/PillButton";
 
@@ -206,6 +207,18 @@ export function Contact({
                   className="mt-1 block text-sm text-pmg-muted no-underline transition-[color] duration-200 ease-in-out hover:text-[#CC1A1A]"
                 >
                   +91 90872 73311
+                </a>
+              </ContactCard>
+
+              <ContactCard
+                icon={<Mail className="h-5 w-5" aria-hidden />}
+                title="Email"
+              >
+                <a
+                  href="mailto:pmg.p.ltd@gmail.com"
+                  className="mt-1 block text-sm text-pmg-muted no-underline transition-[color] duration-200 ease-in-out hover:text-[#CC1A1A]"
+                >
+                  pmg.p.ltd@gmail.com
                 </a>
               </ContactCard>
 
