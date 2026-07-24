@@ -12,7 +12,7 @@ const testimonials = [
   },
   {
     quote:
-      "We have been using PMG for regular TMT bar and steel sheet deliveries across Thiruvallur for over 2 years. Reliable, affordable, and always on time. Best steel logistics partner we have had.",
+      "We use PMG for regular TMT bar and steel sheet deliveries across Thiruvallur. Reliable, affordable, and always on time. They understand steel handling better than any transporter we have worked with.",
     name: "Suresh Babu",
     designation: "Operations Head, Thiruvallur",
   },
