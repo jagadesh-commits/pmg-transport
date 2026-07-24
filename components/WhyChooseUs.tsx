@@ -6,11 +6,11 @@ import { SectionBadge } from "@/components/SectionBadge";
 const features = [
   {
     title: "On-Time Delivery",
-    text: "Industry-leading on-time delivery rate across all routes",
+    text: "Dispatch-led scheduling built around your production and delivery windows",
   },
   {
-    title: "Licensed & Insured",
-    text: "Fully licensed fleet with comprehensive cargo insurance",
+    title: "Steel-Specific Handling",
+    text: "Load securing and crew practices built specifically for coil, TMT, and plate movement",
   },
   {
     title: "24/7 Operations",

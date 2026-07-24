@@ -17,8 +17,8 @@ const services = [
   },
   {
     num: "03",
-    title: "Real-Time Tracking",
-    desc: "GPS-enabled fleet tracking with live status updates and 24/7 dispatch support for every steel consignment",
+    title: "Mill to Fabricator Delivery",
+    desc: "Direct movement from Manali Steel Yard to your fabrication unit or site, with timed dispatch and delivery confirmation",
   },
   {
     num: "04",

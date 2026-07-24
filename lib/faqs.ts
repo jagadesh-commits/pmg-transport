@@ -22,7 +22,7 @@ export const faqs = [
   {
     question: "Is my cargo insured during transport?",
     answer:
-      "Yes, we take full responsibility for safe cargo handling. Transit insurance options are available on request.",
+      "We take full responsibility for safe cargo handling and load securing. Please speak with our team about transit cover options for your consignment.",
   },
   {
     question: "Can you handle oversized or heavy machinery?",
@@ -37,6 +37,6 @@ export const faqs = [
   {
     question: "How do I track my shipment?",
     answer:
-      "Our team provides regular updates via phone and WhatsApp throughout the journey. Live tracking coming soon.",
+      "Our dispatch team provides updates via phone and WhatsApp at pickup, transit, and delivery stages.",
   },
 ] as const;

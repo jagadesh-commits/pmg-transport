@@ -9,7 +9,7 @@ import { PillButton } from "@/components/PillButton";
 const defaultServiceOptions = [
   "Steel Product Transport",
   "Logistics & Warehousing",
-  "Real-Time Tracking",
+  "Mill to Fabricator Delivery",
   "Project Cargo",
 ];
 

@@ -14,8 +14,8 @@ const detail = [
     body: "Bonded warehousing and inventory management for steel stock — mill receipts, fabricator staging, and timed releases aligned to your production schedule. Ideal for buyers who need buffer stock held close to their site.",
   },
   {
-    title: "Real-Time Tracking",
-    body: "GPS-enabled fleet tracking with live status updates and 24/7 dispatch support. Know exactly where your steel consignment is from Manali pickup to final delivery sign-off.",
+    title: "Mill to Fabricator Delivery",
+    body: "Direct movement from Manali Steel Yard to your fabrication unit or site, with timed dispatch and delivery confirmation.",
   },
   {
     title: "Project Cargo",
