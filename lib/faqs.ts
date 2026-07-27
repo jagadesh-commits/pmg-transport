@@ -7,7 +7,7 @@ export const faqs = [
   {
     question: "What types of vehicles do you have?",
     answer:
-      "Our fleet includes Bolero (5 ton), Eicher 15 ton, Eicher 17 ton, Eicher 20 ton, Taurus 24 ton, and 14 Wheeler Taurus for all load sizes.",
+      "Our fleet of 9 vehicles includes Bolero pickups (4.5 tons), Eicher trucks (12, 15, and 20 tons), and a 40-ton Taurus 14-wheeler — covering everything from small local loads to heavy steel consignments.",
   },
   {
     question: "How do I get a price estimate?",

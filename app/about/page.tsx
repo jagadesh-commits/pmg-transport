@@ -94,16 +94,14 @@ export default function AboutPage() {
               understanding of steel cargo that few new transport companies can match.
             </p>
             <p>
-              Our fleet of 11 vehicles — ranging from Bolero pickups to 24-ton Taurus
-              trailers — moves steel coils, TMT bars, sheets, plates, and pipes across
-              Chennai, Thiruvallur, and Kanchipuram. We handle mill-to-fabricator
-              movement with the dispatch discipline that time-sensitive steel supply
-              chains demand.
+              Our fleet of 9 vehicles — from Bolero pickups to a 40-ton Taurus
+              14-wheeler — moves steel coils, TMT bars, sheets, plates, and pipes
+              across Chennai, Thiruvallur, and Kanchipuram.
             </p>
           </div>
           <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
             <div className="w-full rounded-xl border border-pmg-border bg-white px-8 py-6 text-center shadow-[0_4px_24px_rgba(0,0,0,0.06)] sm:w-auto sm:text-left">
-              <p className="font-heading text-5xl font-black text-pmg-red">11+</p>
+              <p className="font-heading text-5xl font-black text-pmg-red">9</p>
               <p className="mt-1 text-sm font-bold uppercase tracking-wider text-pmg-text">
                 Fleet Strength
               </p>

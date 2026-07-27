@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 
 const items = [
-  { label: "Fleet Strength", display: "11+" },
+  { label: "Fleet Strength", display: "9" },
   { label: "Districts Served", display: "3" },
   { label: "Routes Covered", display: "18+" },
   { label: "Dispatch Support", display: "24/7" },

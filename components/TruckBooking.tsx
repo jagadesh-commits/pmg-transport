@@ -19,13 +19,11 @@ type TruckType = {
 };
 
 const TRUCK_TYPES: TruckType[] = [
-  { id: "ace", name: "ACE / DOST / PICKUP", capacity: "1.5 Ton", ratePerKm: 22, baseFare: 1500 },
-  { id: "eicher14", name: "EICHER 14FT", capacity: "3.5 Ton", ratePerKm: 30, baseFare: 2200 },
-  { id: "eicher17", name: "EICHER 17FT", capacity: "5 Ton", ratePerKm: 38, baseFare: 2800 },
-  { id: "eicher19", name: "EICHER 19FT", capacity: "7 Ton", ratePerKm: 46, baseFare: 3400 },
-  { id: "container20", name: "20FT CONTAINER", capacity: "6.5 Ton", ratePerKm: 52, baseFare: 4000 },
-  { id: "eicherpro22", name: "EICHER PRO 22FT", capacity: "10 Ton", ratePerKm: 64, baseFare: 5200 },
-  { id: "container32", name: "32FT CONTAINER", capacity: "7/8 Ton", ratePerKm: 78, baseFare: 6500 },
+  { id: "bolero", name: "Bolero", capacity: "4.5 Ton", ratePerKm: 22, baseFare: 1500 },
+  { id: "eicher12", name: "Eicher", capacity: "12 Ton", ratePerKm: 30, baseFare: 2200 },
+  { id: "eicher15", name: "Eicher", capacity: "15 Ton", ratePerKm: 38, baseFare: 2800 },
+  { id: "eicher20", name: "Eicher", capacity: "20 Ton", ratePerKm: 46, baseFare: 3400 },
+  { id: "taurus14", name: "Taurus 14-Wheeler", capacity: "40 Ton", ratePerKm: 78, baseFare: 6500 },
 ];
 
 const GOODS_TYPES = [

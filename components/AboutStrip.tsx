@@ -20,7 +20,7 @@ function TruckIcon() {
 
 const statBoxes = [
   { num: "18+", label: "Routes Covered" },
-  { num: "11+", label: "Fleet Strength" },
+  { num: "9", label: "Fleet Strength" },
   { num: "24/7", label: "Dispatch Support" },
   { num: "3", label: "Districts Served" },
 ];
@@ -39,7 +39,7 @@ export function AboutStrip() {
           <div>
             <SectionBadge icon={<TruckIcon />}>About PMG</SectionBadge>
             <p className="font-heading mt-8 text-7xl font-black leading-none text-pmg-red sm:text-8xl">
-              11+
+              9
             </p>
             <p className="font-heading mt-2 text-xl font-bold uppercase tracking-wide text-pmg-text">
               Trucks in Our Fleet

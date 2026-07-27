@@ -18,7 +18,7 @@ const testimonials = [
   },
   {
     quote:
-      "Booked a Taurus 24 ton for a steel pipe and structural beam delivery. The team was professional, had all documentation ready, and delivered safely. Will definitely use again.",
+      "Booked a Taurus 14-wheeler for a steel pipe and structural beam delivery. The team was professional, had all documentation ready, and delivered safely. Will definitely use again.",
     name: "Arjun Selvam",
     designation: "Site Engineer, Kanchipuram",
   },
